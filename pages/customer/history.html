@@ -116,11 +116,11 @@
             <!-- End Bottom Tab -->
 
             <!-- Start Body -->
-            <section class="purchaseList pb-5 mt-5">
+            <section class="history pb-5 mt-5">
                 <div class="container">
-                    <div class="purchase">
+                    <div class="history">
                         <div class="inner-wrap row p-3">
-                            <h1 class=" mb-4 text-center fw-bold mt-5">History</h1>
+                            <h1 class=" mb-4 text-center fw-bold mt-5">My History</h1>
                             <div class="col-12 col-lg-3">
                                 <div class="col mb-3">
                                     <input type="search" class="form-control" placeholder="Search Product">
@@ -130,10 +130,10 @@
                                 <table class="table table-light">
                                     <thead>
                                         <th>ID</th>
-                                        <th>NAME</th>
+                                        <th>USERNAME</th>
                                         <th>EMAIL</th>
-                                        <th>PROFILE PIC</th>
-                                        <th>ROLE</th>
+                                        <th>ADDRESS</th>
+                                        <th>DATE</th>
                                         <th>ACTION</th>
                                     </thead>
                                     <tbody>
@@ -144,37 +144,8 @@
                                             <td data-label="PROFILE PIC">asd</td>
                                             <td data-label="ROLE">Ste</td>
                                             <td data-label="ACTION">
-                                                <button data-bs-toggle="modal" data-bs-target="#myModal"
-                                                    class="btn btn-sm btn-warning mx-1">Edit</button>
-                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <td data-label="ID">1</td>
-                                            <td data-label="NAME">Karlo</td>
-                                            <td data-label="EMAIL">carlngujo@gmail.com</td>
-                                            <td data-label="PROFILE PIC">asd</td>
-                                            <td data-label="ROLE">Ste</td>
-                                            <td data-label="ACTION">
-                                                <button data-bs-toggle="modal" data-bs-target="#myModal"
-                                                    class="btn btn-sm btn-warning mx-1">Edit</button>
-                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tbody>
-                                        <tr>
-                                            <td data-label="ID">1</td>
-                                            <td data-label="NAME">Karlo</td>
-                                            <td data-label="EMAIL">carlngujo@gmail.com</td>
-                                            <td data-label="PROFILE PIC">asd</td>
-                                            <td data-label="ROLE">Ste</td>
-                                            <td data-label="ACTION">
-                                                <button data-bs-toggle="modal" data-bs-target="#myModal"
-                                                    class="btn btn-sm btn-warning mx-1">Edit</button>
-                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                                <button data-bs-toggle="modal" data-bs-target="#history"
+                                                class="btn btn-sm btn-info mx-1">View</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -185,6 +156,52 @@
                 </div>
             </section>
             <!-- End Body -->
+
+             <!-- Modal Start -->
+             <section>
+                <div class="container">
+                    <div class="modal mt-4" id="history">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content mt-4">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="form-area bg-white rounded-4">
+                                        <h1 class="text-center text-info">Review Order</h1>
+                                        <form>
+                                            <div class="mb-2 mt-4">
+                                                <input type="text" class="form-control" placeholder="CARL" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="NGOJO" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="IBABAO CORDOVA" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="DANGGIT" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="number" class="form-control" placeholder="3" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="GCASH" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="COMPLETED" readonly>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="number" class="form-control" placeholder="10-12-2023" readonly>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Modal End -->
         </div>
     </div>
 

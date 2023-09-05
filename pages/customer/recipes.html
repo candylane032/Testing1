@@ -133,7 +133,8 @@
                                     <div class="img-area mb-4 text-center"><img class="fish" alt=""
                                             src="/images/Danggit.jpg"></div>
                                     <div>
-                                        <a class="btn btn-warning btn-sm mt-3 mx-2" href="#">View</a>
+                                        <button data-bs-toggle="modal" data-bs-target="#recipes"
+                                            class="btn btn-info btn-sm mt-3 mx-2">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +146,8 @@
                                     <div class="img-area mb-4 text-center"><img class="fish" alt=""
                                             src="/images/bangus.jpg"></div>
                                     <div>
-                                        <a class="btn btn-warning btn-sm mt-3 mx-2" href="#">View</a>
+                                        <button data-bs-toggle="modal" data-bs-target="#recipes"
+                                            class="btn btn-info btn-sm mt-3 mx-2">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +159,8 @@
                                     <div class="img-area mb-4 text-center"><img class="fish" alt=""
                                             src="/images/tulingan.jpg"></div>
                                     <div>
-                                        <a class="btn btn-warning btn-sm mt-3 mx-2" href="#">View</a>
+                                        <button data-bs-toggle="modal" data-bs-target="#recipes"
+                                            class="btn btn-info btn-sm mt-3 mx-2">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +172,8 @@
                                     <div class="img-area mb-4 text-center"><img class="fish" alt=""
                                             src="/images/lapu.jpg"></div>
                                     <div>
-                                        <a class="btn btn-warning btn-sm mt-3 mx-2" href="#">View</a>
+                                        <button data-bs-toggle="modal" data-bs-target="#recipes"
+                                            class="btn btn-info btn-sm mt-3 mx-2">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -180,8 +184,9 @@
                                     <h3 class="card-title">Tamarong</h3>
                                     <div class="img-area mb-4 text-center"><img class="fish" alt=""
                                             src="/images/tamarong.jpg"></div>
-                                    <div>
-                                        <a class="btn btn-warning btn-sm mt-3 mx-2" href="#">View</a>
+                                  <div>
+                                        <button data-bs-toggle="modal" data-bs-target="#recipes"
+                                            class="btn btn-info btn-sm mt-3 mx-2">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +198,8 @@
                                     <div class="img-area mb-4 text-center"><img class="fish" alt=""
                                             src="/images/tamban.jpg"></div>
                                     <div>
-                                        <a class="btn btn-warning btn-sm mt-3 mx-2" href="#">View</a>
+                                        <button data-bs-toggle="modal" data-bs-target="#recipes"
+                                            class="btn btn-info btn-sm mt-3 mx-2">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -202,6 +208,44 @@
                 </div>
             </section>
             <!-- End Body -->
+
+            <!-- Modal Start -->
+            <section>
+                <div class="container">
+                    <div class="modal mt-4" id="recipes">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content mt-4">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="form-area bg-white rounded-4">
+                                        <h1 class="text-center text-info">Viewing...</h1>
+                                        <form>
+                                            <div class="mb-2 mt-4">
+                                                <input type="text" class="form-control" placeholder="Danggit" readonly>
+                                            </div>
+                                            <div>
+                                                <input type="text" class="form-control" placeholder="Tinola" readonly>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <p>Recipes List</p>
+                                            </div>
+                                            <ul>
+                                                <li class="text-start" >Ahos</li>
+                                                <li class="text-start">Sibuyas</li>
+                                                <li class="text-start">Asin</li>
+                                                <li class="text-start">Tubig</li>
+                                                <li class="text-start">Hilo</li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Modal End -->
         </div>
     </div>
 

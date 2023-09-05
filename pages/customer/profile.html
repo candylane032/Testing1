@@ -129,13 +129,7 @@
                                 <div class="row">
                                     <div class="col-md-6 p-2">
                                         <div class="form-group mb-2">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 p-2">
-                                        <div class="form-group mb-2">
-                                            <label>Last Name</label>
+                                            <label>Username</label>
                                             <input type="text" class="form-control">
                                         </div>
                                     </div>
@@ -145,28 +139,13 @@
                                             <input type="text" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 p-2">
-                                        <div class="form-group mb-2">
-                                            <label>Phone number</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 p-2">
-                                        <div class="form-group mb-2">
-                                            <label>Address</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 p-2">
-                                        <div class="form-group mb-2">
-                                            <label>Birth-Date</label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
                                 </div>
                                 <div>
-                                    <button class="btn btn-primary">Update</button>
-                                    <button class="btn btn-light">Cancel</button>
+                                    <div class="text-danger">
+                                        <small>Complete your information first.</small>
+                                    </div>
+                                    <button data-bs-toggle="modal" data-bs-target="#update"
+                                                    class="btn btn-sm btn-dark mx-1">Edit</button>
                                 </div>
                             </div>
                         </div>
@@ -174,6 +153,40 @@
                 </div>
             </section>
             <!-- End Body -->
+
+            <!-- Modal Start -->
+            <section>
+                <div class="container">
+                    <div class="modal mt-4" id="update">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content mt-4">
+                                <div class="modal-body">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                    <div class="form-area bg-white rounded-4">
+                                        <h1 class="text-center text-warning">Complete your Information</h1>
+                                        <form>
+                                            <div class="mb-2 mt-4">
+                                                <input type="text" class="form-control" placeholder="Enter First Name">
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="Enter Last Name">
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control" placeholder="Enter Number">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary mt-3"><a
+                                                class="text-decoration-none text-dark"
+                                                href="#">Update</a></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Modal End -->
         </div>
     </div>
 

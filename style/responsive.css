@@ -136,5 +136,15 @@
 	.container {
 		text-align: center;
 	}
+	.form-area {
+		padding: 1.5em;
+	}
 
+	.form-area h1 {
+		font-size: 18px;
+	}
+
+	.form-area .btn {
+		margin-right: 35%;
+	}
 }

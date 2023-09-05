@@ -6,7 +6,7 @@
 }
 
 .navbar {
-    background-color: #00c9a7;
+    background-color: #02bd9e;
     padding: 12px;
 }
 
@@ -75,4 +75,46 @@
     background-color: hsl(158, 33%, 95%);
     border: none;
     margin-bottom: 25px;
+}
+.modal-body {
+	padding: 0;
+}
+
+.btn-close {
+	position: absolute;
+	right: 0;
+	padding: 1em;
+}
+
+.form-area h1 {
+	font-size: 2.3em;
+	font-weight: bold;
+	color: black;
+}
+
+.form-area {
+	padding: 3em;
+	max-width: 100%;
+	background-color: hsl(165, 5%, 67%);
+}
+
+.form-area .btn {
+	width: 35%;
+	margin-left: 35%;
+	font-weight: 800;
+	background-color: gray;
+	border-radius: 15px;
+}
+
+.btn.login {
+	padding: 15px 50px;
+	font-family: alfa slab one;
+	font-size: 20px;
+	letter-spacing: 2px;
+	border-radius: 50px;
+}
+
+.form-area p {
+	text-align: center;
+	padding-top: 2em;
 }

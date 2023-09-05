@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style/landing.css">
+	<link rel="stylesheet" href="/style/global.css">
 	<link rel="stylesheet" href="style/responsive.css">
 </head>
 
@@ -59,8 +60,8 @@
 						<h5>CHARLYN'S SEAFOOD ESSENTIALS</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt
 							excepturi quas vero.</p>
-						<a class="btn btn-outline-light mt-3 mx-2" href="/pages/customer/product.html">Get Started</a>
-						<a class="btn btn-outline-info  mt-3 mx-2 px-4" href="/pages/customer/product.html">Sign In</a>
+						<button data-bs-toggle="modal" data-bs-target="#register" class="btn btn-outline-light mt-3 mx-2">Get Started</button>
+						<button data-bs-toggle="modal" data-bs-target="#login" class="btn btn-outline-info  mt-3 mx-2 px-4">Sign In</button>
 					</div>
 				</div>
 				<div class="carousel-item">
@@ -69,8 +70,8 @@
 						<h5>CHARLYN'S SEAFOOD ESSENTIALS</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt
 							excepturi quas vero.</p>
-						<a class="btn btn-outline-light mt-3 mx-2" href="#">Get Started</a>
-						<a class="btn btn-outline-info  mt-3 mx-2 px-4" href="#">Sign In</a>
+						<button data-bs-toggle="modal" data-bs-target="#register" class="btn btn-outline-light mt-3 mx-2">Get Started</button>
+						<button data-bs-toggle="modal" data-bs-target="#login" class="btn btn-outline-info  mt-3 mx-2 px-4">Sign In</button>
 					</div>
 				</div>
 				<div class="carousel-item">
@@ -79,8 +80,8 @@
 						<h5>CHARLYN'S SEAFOOD ESSENTIALS</h5>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, nulla, tempore. Deserunt
 							excepturi quas vero.</p>
-						<a class="btn btn-outline-light mt-3 mx-2" href="#">Get Started</a>
-						<a class="btn btn-outline-info  mt-3 mx-2 px-4" href="#">Sign In</a>
+						<button data-bs-toggle="modal" data-bs-target="#register" class="btn btn-outline-light mt-3 mx-2">Get Started</button>
+						<button data-bs-toggle="modal" data-bs-target="#login" class="btn btn-outline-info  mt-3 mx-2 px-4">Sign In</button>
 					</div>
 				</div>
 			</div>
@@ -93,6 +94,74 @@
 		</div>
 	</div>
 	<!-- Carousel End -->
+
+	<!-- Modal Start -->
+	<section>
+			<div class="modal mt-4" id="login">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-body">
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							<div class="form-area bg-white rounded-4">
+								<h1 class="text-center">Login</h1>
+								<form>
+									<div class="mb-2 mt-4">
+										<label for="exampleInputEmail1" class="form-label">Email</label>
+										<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+									</div>
+									<div class="mb-2">
+										<label for="exampleInputPassword1" class="form-label">Pasword</label>
+										<input type="password" class="form-control" id="exampleInputPassword1">
+									</div>
+									<div class="mb-2">
+										<label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+										<input type="password" class="form-control" id="exampleInputPassword1">
+									</div>
+									<button type="submit" class="btn mt-3"><a  class="login text-decoration-none text-dark" href="/pages/customer/home.html">LOGIN</a></button>
+									<p>Dont have an account?<a class="login text-decoration-none mx-2" href="#">Signup</a></p>
+								</form>
+							</div>
+						</div>
+					  </div>
+				</div>
+			</div>
+	</section>
+
+	<section>
+		<div class="modal mt-4" id="register">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content mt-4">
+					<div class="modal-body">
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<div class="form-area bg-white rounded-4">
+							<h1 class="text-center">Register</h1>
+							<form>
+								<div class="mb-2 mt-4">
+									<label for="exampleInputUsername1" class="form-label">Username</label>
+									<input type="username" class="form-control" id="exampleInputUsername1">
+								</div>
+								<div class="mb-2">
+									<label for="exampleInputEmail1" class="form-label">Email</label>
+									<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								</div>
+								<div class="mb-2">
+									<label for="exampleInputPassword1" class="form-label">Pasword</label>
+									<input type="password" class="form-control" id="exampleInputPassword1">
+								</div>
+								<div class="mb-2">
+									<label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+									<input type="password" class="form-control" id="exampleInputPassword1">
+								</div>
+								<button type="submit" class="btn mt-3">REGISTER</button>
+								<p>Already have an account?<a class="login text-decoration-none mx-2" href="#">Sign In</a></p>
+							</form>
+						</div>
+					</div>
+				  </div>
+			</div>
+		</div>
+	</section>
+	<!-- Modal End -->
 
 	<!-- Header Start -->
 	<section class="about section-padding">
@@ -108,7 +177,7 @@
 							Thank you for choosing our seafood website as your go-to destination for all your seafood
 							needs.
 						</p>
-						<a class="btn btn-success" href="/pages/customer/product.html">Order Now</a>
+						<button data-bs-toggle="modal" data-bs-target="#login" class="btn btn-success">Order Now</button>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-12 col-12">
