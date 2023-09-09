@@ -118,3 +118,157 @@
 	text-align: center;
 	padding-top: 2em;
 }
+
+.sidebar {
+    background-color: #F4F4F4;
+    min-width: 200px;
+    max-width: 200px;
+    transition: all 0.2s;
+}
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #E0E0E0;
+}
+
+.header-box>h1 {
+    font-size: 14px;
+    color: #7C2500;
+}
+
+.a {
+    color: black;
+}
+
+.a:hover {
+    color: #7C2500;
+    font-weight: 400;
+}
+
+.a:active {
+    color: crimson;
+}
+
+.h-color {
+    color: #000;
+}
+
+.navbar-brand {
+    align-items: center;
+}
+
+.logo {
+    width: 35px;
+}
+
+.res {
+    font-size: 13px;
+}
+
+.land {
+    font-size: 11px;
+}
+
+.dropdown-menu {
+    background-color: #F4F4F4;
+}
+
+.nav-item>.nav-link {
+    color: black;
+}
+
+.nav-item>.home {
+    font-weight: bold;
+}
+
+.bi {
+    color: black;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.submit {
+    display: flex;
+    margin: auto;
+}
+
+.inner-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 762px) {
+    .bg .container .login-wrap .CapTitle>h1 {
+        font-size: 30px;
+    }
+    #side_nav {
+        margin-left: -250px;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+    #side_nav.active {
+        margin-left: 0;
+    }
+    .main-container .sidebar .header-box>h1 {
+        font-size: 11px;
+    }
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 1024px) {
+    .container .text>h1 {
+        font-size: 45px;
+    }
+    .container .text .t>.title {
+        font-size: 18px;
+    }
+    .register .container .loginAndRegister-wrap>.inner-wrap {
+        margin-top: 30px;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-top: 15px;
+    }
+
+    table tbody tr td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: 600px;
+        font-size: 14px;
+        text-align: left;
+    }
+}
