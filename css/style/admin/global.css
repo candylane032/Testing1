@@ -1,0 +1,136 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+/* Sidebar & Navbar Start */
+.sidebar {
+    background-color: #0ce4c0;
+    min-width: 200px;
+    max-width: 200px;
+    transition: all 0.2s;
+}
+.navbar {
+    background-color: #0ce4c0;
+}
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+.header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+.header-box>h1 {
+    font-size: 17px;
+    color: #FD7F2C;
+}
+.username {
+    color: white;
+    font-size: 17px;
+    text-transform: uppercase;
+}
+
+.a {
+    color: white;
+    font-size: 17.5px;
+    text-transform: uppercase;
+}
+.a:hover {
+    color: #D2F7D6;
+}
+
+.logo {
+    width: 50px;
+    margin-left: 5px;
+}
+.bi {
+    color: black;
+    font-size: large;
+}
+
+.nav-item>.nav-link {
+    color: white;
+    font-size: 20px;
+    
+}
+.nav-item>.nav-link:hover {
+    color: #D2F7D6;
+    font-size: 20px;
+    
+}
+.AddButton {
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-info {
+    display: flex;
+    margin: auto;
+}
+/* Sidebar & Navbar End */
+
+.img-area .fish {
+    width: 100%;
+    height: 35vh;
+    border-radius: 5px;
+}
+
+.card {
+    border-radius: 7px;
+    background-color: hsl(0, 0%, 98%);
+    border: none;
+    margin-bottom: 25px;
+}
+
+#btn-logout {
+    color: #8A0F1E ;
+    cursor: pointer;
+}
+
+.modalImage {
+    height: 100px;
+    width: 150px;
+}
+
+
+#displayProfilePic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imgProfile {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+#chart {
+    width: 400px; 
+    height: 200px;
+    display: flex;
+    margin: 5%;
+    
+  }
+  #myChartToday{
+    background:rgb(216, 255, 231);
+    height: 100%;
+    margin: 5%;
+  }
+  #myChartDaily{
+    background:rgb(255, 254, 181);
+    height: 100%;
+    margin: 5%;
+  }
+  #myChartMonthly{
+    background:rgb(255, 188, 188);
+    height: 100%; 
+    margin: 5%;
+  }
+
+
+
+

@@ -1,0 +1,23 @@
+.qr {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.qrcode {
+    width: 290px;
+    height: 370px;
+    border-radius: 10px;
+    border: 1px solid #EBEDEF;
+}
+
+.qrcodeReserve {
+    width: 290px;
+    height: 370px;
+    border-radius: 10px;
+    border: 1px solid #EBEDEF;
+}
+
+
