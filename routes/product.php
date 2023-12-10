@@ -2,8 +2,8 @@
 require_once("backend.php");
 class product extends backend 
 {
-	public function doAddProduct($pname,$img,$p_price){
-        return self::addProdcut($pname,$img,$p_price);
+	public function doAddProduct($pname,$img,$p_price, $p_desc){
+        return self::addProdcut($pname,$img,$p_price, $p_desc);
     }
 
     public function doDisplayDataProductAdmin(){
@@ -23,8 +23,8 @@ class product extends backend
         return self::displayDataProductModal($product_id);
     }
 
-    public function doUpdateProduct($newPname, $newImg, $newP_Price, $productId){
-        return self::updateProduct($newPname, $newImg, $newP_Price, $productId);
+    public function doUpdateProduct($newPname, $newImg, $newP_Price, $newPdesc, $productId){
+        return self::updateProduct($newPname, $newImg, $newP_Price, $newPdesc, $productId);
     }
 
     public function doDisplayDataProductStockModal($product_id){
@@ -73,6 +73,11 @@ class product extends backend
     {
         return self::reserveProductByPaymaya($product_id,$reserve_kilo,$r_total_amount,$r_p_method,$r_ref_num,$r_p_method_receipt);
     }
+    public function desc($viewProdId,$viewUserId)
+    {
+        return self::getDesc($viewProdId,$viewUserId);
+    }
+
 
 
 
@@ -96,9 +101,9 @@ class product extends backend
     }
 
 
-    private function addProdcut($pname,$img,$p_price){
+    private function addProdcut($pname,$img,$p_price, $p_desc){
         try {
-            if ($this->checkIfVallidAddProduct($pname,$img,$p_price)) {
+            if ($this->checkIfVallidAddProduct($pname,$img,$p_price,$p_desc)) {
                 $database = new database();
                 if ($database->getStatus()) {
 
@@ -122,7 +127,7 @@ class product extends backend
 
 
                     $stmt = $database->getCon()->prepare($this->insertAddProductQuery());
-                    $stmt->execute(array($this->getId(),$pname,$img,$p_price,$this->getCurrentDate()));
+                    $stmt->execute(array($this->getId(),$pname,$img,$p_price,$p_desc,$this->getCurrentDate()));
                     $result = $stmt->fetch();
                     if (!$result) {
                         $database->closeConnection();
@@ -163,6 +168,24 @@ class product extends backend
         }
     }
 
+    private function getDesc($viewProdId,$viewUserId){
+        try {
+            $database = new database();
+            if ($database->getStatus()){
+                $stmt = $database->getCon()->prepare($this->getDescQuery());
+                $stmt->execute(array($viewProdId, $viewUserId));
+                $result = $stmt->fetchAll();
+                $database->closeConnection();
+                return json_encode($result);
+            }else{
+                return 'dfgdfgdff fghfghfghfghfg';
+            }
+        
+        } catch (PDOException $th) {
+            throw $th;
+            // return "501";
+        }
+    }
 
     private function displayDataProduct($user_id){
         try {
@@ -217,12 +240,12 @@ class product extends backend
         }
     }
 
-    private function updateProduct($newPname, $newImg, $newP_Price, $productId){
+    private function updateProduct($newPname, $newImg, $newP_Price, $newPdesc, $productId){
         try {
             $database = new database();
             if ($database->getStatus()){
                 $stmt = $database->getCon()->prepare($this->updateProductQuery());
-                $stmt->execute(array($newPname, $newImg, $newP_Price,$this->getCurrentDate(),$productId));
+                $stmt->execute(array($newPname, $newImg, $newP_Price, $newPdesc,$this->getCurrentDate(),$productId));
                 return "200";
             }else{
                 return "404";
@@ -569,7 +592,7 @@ class product extends backend
 
 
     private function insertAddProductQuery(){
-        return "INSERT INTO products (`user_id`, `pname`,`img`,`p_price`, created) VALUES (?,?,?,?,?)";
+        return "INSERT INTO products (`user_id`, `pname`,`img`,`p_price`,`p_desc`, created) VALUES (?,?,?,?,?,?)";
     }
 
     private function ExistProductNameQuery(){
@@ -596,7 +619,7 @@ class product extends backend
     }
 
     private function updateProductQuery() {
-        return "UPDATE products SET pname = ?, img = ?, p_price = ?, created = ? WHERE product_id = ?";
+        return "UPDATE products SET pname = ?, img = ?, p_price = ?, p_desc = ?, created = ? WHERE product_id = ?";
     }
 
     private function displayByIdProductStockQuery(){
@@ -642,7 +665,9 @@ class product extends backend
     private function reserveProductByPaymayaQuery(){
         return "INSERT INTO reserves (`user_id`, `product_id`,`reserve_kilo`,`r_total_amount`,`r_p_method`,`r_ref_num`,`r_p_method_receipt` , created) VALUES (?,?,?,?,?,?,?,?)";
     }
-
+    private function getDescQuery(){
+        return "SELECT products.p_desc FROM products INNER JOIN profile WHERE products.product_id = ? AND profile.user_id = ?";
+    }
 
 
 }

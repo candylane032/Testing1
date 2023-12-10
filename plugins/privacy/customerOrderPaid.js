@@ -1,5 +1,5 @@
-$(document).ready(function() {
-   doRequestSelectUserIdProfile();
+$(document).ready(function () {
+    doRequestSelectUserIdProfile();
 });
 
 
@@ -9,7 +9,7 @@ var doRequestSelectUserIdProfile = () => {
         type: "POST",
         url: "../../routes/router.php",
         data: { choice: 'SelectUserIdProfileOrder' },
-        success: function(data) {
+        success: function (data) {
             console.log(data)
             var json = JSON.parse(data);
             var str = "";
@@ -18,8 +18,8 @@ var doRequestSelectUserIdProfile = () => {
                 str += '<div class="autoClick" user_id="' + element.user_id + '"></div>';
             });
             $('#selectUserIdProfile').append(str);
-            
-            $('.autoClick').each(function() {
+
+            $('.autoClick').each(function () {
                 profileUserId = $(this).attr("user_id");
                 console.log(profileUserId);
                 doRequestDisplayOrderPaid(profileUserId);
@@ -27,7 +27,7 @@ var doRequestSelectUserIdProfile = () => {
 
 
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             alert(thrownError);
         }
     });
@@ -38,36 +38,29 @@ var doRequestDisplayOrderPaid = (profileUserId) => {
     $.ajax({
         type: "POST",
         url: "../../routes/router.php",
-        data: { choice: 'DisplayOrderPaid', user_id: profileUserId},
-        success: function(data) {
+        data: { choice: 'DisplayOrderPaid', user_id: profileUserId },
+        success: function (data) {
             console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
-            let order = 1;
 
             json1.forEach(element1 => {
                 str1 += '<tr>';
-                //   str1 += '<td data-label="ID">' + element1.order_id + '</td>';
-                  str1 += '<td data-label="PRODUCT NAME">' + element1.pname + '</td>';
-                  str1 += '<td data-label="KILO">' + element1.order_kilo + '</td>';
-                  str1 += '<td data-label="TOTAL AMOUNT">' + element1.total_amount + '</td>';
-                  str1 += '<td class="text-success fw-bold">' + element1.o_payment_status + '</td>';
-                  str1 += '<td class="text-uppercase" data-label="METHOD">' + element1.p_method + '</td>';
-                  str1 += '<td class="text-success text-capitalize" data-label="DELIVERY">' + element1.o_delivery + '</td>';
-                  str1 += '<td data-label="CREATED">' + element1.created + '</td>';
-                  // str1 += '<td data-label="ACTION">';
-                  //   str1 += '<button class="btn btn-sm btn-info mx-1">View</button>';
-                  //   str1 += '<button class="btn btn-sm btn-success">Message</button>';
-                  // str1 += '</td>';
+                str1 += '<td data-label="PRODUCT NAME">' + element1.pname + '</td>';
+                str1 += '<td data-label="KILO">' + element1.order_kilo + '</td>';
+                str1 += '<td data-label="TOTAL AMOUNT">' + element1.total_amount + '</td>';
+                str1 += '<td class="text-success">' + element1.o_payment_status + '</td>';
+                str1 += '<td class="text-uppercase" data-label="METHOD">' + element1.p_method + '</td>';
+                str1 += '<td class="text-success text-capitalize" data-label="DELIVERY">' + element1.o_delivery + '</td>';
+                str1 += '<td data-label="CREATED">' + element1.created + '</td>';
                 str1 += '</tr>';
 
-                order++;
             });
             $('#displayOrderPaid').append(str1);
 
 
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             alert(thrownError);
         }
     });

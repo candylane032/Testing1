@@ -72,12 +72,12 @@ class chart extends backend
     }
 
     private function chartTodayQuery() {
-        return "SELECT r.r_delivery AS delivery, r.product_id AS product_id, SUM(r.reserve_kilo) AS reserve_kilo, p.pname AS pname, DATE_FORMAT(STR_TO_DATE(r.created, '%l:%i:%p - %Y/%m/%d'), '%M %e, %Y') AS Date FROM reserves r JOIN products p ON r.product_id = p.product_id WHERE r.r_delivery = 'complete' GROUP BY pname, DATE HAVING Date = DATE_FORMAT(CURDATE(), '%M %e, %Y');";   
+        return "SELECT p.pname, o.Date, SUM(total) AS combined_total FROM products p LEFT JOIN ( SELECT DATE_FORMAT(STR_TO_DATE(o.created, '%l:%i:%p - %Y/%m/%d'), '%M %e, %Y') AS Date, o.product_id, SUM(o.order_kilo) AS total FROM orders o WHERE o.o_delivery = 'complete' AND DATE(STR_TO_DATE(o.created, '%l:%i:%p - %Y/%m/%d')) = CURDATE() GROUP BY Date, o.product_id UNION SELECT DATE_FORMAT(STR_TO_DATE(r.created, '%l:%i:%p - %Y/%m/%d'), '%M %e, %Y') AS Date, r.product_id, SUM(r.reserve_kilo) AS total FROM reserves r WHERE r.r_delivery = 'complete' AND DATE(STR_TO_DATE(r.created, '%l:%i:%p - %Y/%m/%d')) = CURDATE() GROUP BY Date, r.product_id ) AS o ON p.product_id = o.product_id GROUP BY pname, Date HAVING combined_total IS NOT NULL;";   
     }
     private function chartDailyQuery() {
-        return "SELECT SUM(reserve_kilo) AS reserve_kilo, DATE_FORMAT(STR_TO_DATE(created, '%l:%i:%p - %Y/%m/%d'), '%M %e, %Y') AS Date, r_delivery FROM reserves WHERE r_delivery = 'complete' GROUP BY Date;";  
+        return "SELECT Date, SUM(total) AS combined_total FROM ( SELECT DATE_FORMAT(STR_TO_DATE(created, '%l:%i:%p - %Y/%m/%d'), '%M %e, %Y') AS Date, SUM(order_kilo) AS total FROM orders WHERE o_delivery = 'complete' GROUP BY Date UNION SELECT DATE_FORMAT(STR_TO_DATE(created, '%l:%i:%p - %Y/%m/%d'), '%M %e, %Y') AS Date, SUM(reserve_kilo) AS total FROM reserves WHERE r_delivery = 'complete' GROUP BY Date ) AS combined_data GROUP BY Date;";  
     }
     private function chartMonthlyQuery() {
-        return "SELECT r.r_delivery AS delivery, r.product_id AS product_id, SUM(r.reserve_kilo) AS reserve_kilo, p.pname AS pname, DATE_FORMAT(STR_TO_DATE(r.created, '%l:%i:%p - %Y/%m/%d'), '%M %Y') AS Date FROM reserves r JOIN products p ON r.product_id = p.product_id WHERE r.r_delivery = 'complete' GROUP BY Date;";  
+        return "SELECT Date, SUM(total) AS combined_total FROM ( SELECT DATE_FORMAT(STR_TO_DATE(created, '%l:%i:%p - %Y/%m/%d'), '%M %Y') AS Date, SUM(order_kilo) AS total FROM orders WHERE o_delivery = 'complete' GROUP BY Date UNION SELECT DATE_FORMAT(STR_TO_DATE(created, '%l:%i:%p - %Y/%m/%d'), '%M %Y') AS Date, SUM(reserve_kilo) AS total FROM reserves WHERE r_delivery = 'complete' GROUP BY Date ) AS combined_data GROUP BY Date;";  
     }
 }

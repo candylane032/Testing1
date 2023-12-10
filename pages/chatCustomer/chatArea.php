@@ -12,20 +12,23 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- DOWNLOADED CSS -->
+    <link rel="stylesheet" href="../../bootstrap/boots.css">
+	<link rel="stylesheet" href="../../fontawesome/all.min.css">
+	<link rel="stylesheet" href="../../fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="../../bootstrap-icons-1.11.1/bootstrap-icons.css">
+    
 	<link rel="stylesheet" type="text/css" href="../chatCustomer/chat.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../chatCustomer/global.css">
     <link rel="stylesheet" href="../../css/style/responsive.css">
-  <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
-	<title>chat</title>
+	<title> Chat Area | Page</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="#"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -74,7 +77,7 @@
 	<div class="body fixed-top">
 		<div class="wrappers">
 			<section class="chat-area">
-				<header class="chat-header ">
+				<header class="chat-header rounded">
 					<?php 
 						include '../chatCustomer/config.php';
 						$user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
@@ -84,12 +87,13 @@
 						}
 
 					?>
-					<a class="back-icon" href="../chatCustomer/chat.php"><i class="bi bi-arrow-left"></i></a>
+					<a class="back-icon" href="../chatCustomer/index.php"><i class="bi bi-arrow-left"></i></a>
 					<img src="../chatAdmin/admin.png">
 					<div class="details">
 						<span class="fw-bold text-capitalize"><?php echo $row['username'];?></span>
-						<p><?php echo $row['status'];?></p>
-					</div>  
+                        <small><i class="fa-solid fa-phone mx-1"></i> 09984018923</small>
+						<p><?php echo $row['status'];?></p>      
+					</div>
 				</header>
 				<div class="chat-box">
 					
@@ -100,7 +104,6 @@
 					<input type="text" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
 					<input type="text" name="message" class="input-field rounded-5" placeholder="Type a message here...">
 					<button class="mx-2"><i class="bi bi-telegram"></i></button>
-                    <button><i class="bi bi-image"></i></button>
 				</form>
 			</section>
 		</div>
@@ -108,5 +111,10 @@
 	
 
 	<script src="../chatCustomer/chat.js"></script>
+
+     <!-- DOWNLOADED JS -->
+    <script src="../../toaster/toastr.min.js"></script>
+    <script src="../../sweetalert/alert.js"></script>
+    <script src="../../bootstrap/boots.js"></script>
 </body>
 </html>

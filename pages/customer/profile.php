@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
     <link rel="stylesheet" href="../../css/style/customer/profile.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     
     <title>Profile | Page</title>
@@ -34,7 +34,7 @@
     <div class="main-container d-flex">
     <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="index.php"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -46,7 +46,7 @@
                             <a class="nav-link" href="index.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">About Us</a>
@@ -133,8 +133,8 @@
             <!-- Start Body -->
             <section class="Profile mt-5 pt-5">
                 <div class="container">
-                    <div class="bg-light rounded">
-                        <div class="py-2 px-3">
+                    <div class="rounded">
+                        <div class="py-2 px-3 bg-white rounded">
                             <h1 class="text-center fw-bold mb-2">My Account</h1>
                             <div id="displayProfilePic">
                                     
@@ -144,29 +144,31 @@
                                     <div class="col-12 col-lg-5">
                                         <div>
                                             <label>Username</label>
-                                            <p><?php echo $_SESSION['username'] ?></p>
+                                            <p class="bg-light"><?php echo $_SESSION['username'] ?></p>
                                             <label>Firstname</label>
-                                            <p class="text-danger">Unknown</p>
+                                            <p class="text-danger bg-light">Unknown</p>
                                             <label>Gender</label>
-                                            <p class="text-danger">Unknown</p>
+                                            <p class="text-danger bg-light">Unknown</p>
                                             <label>Address</label>
-                                            <p class="text-danger">Unknown</p>
+                                            <p class="text-danger bg-light">Unknown</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-lg-5 px-5">
-                                        <label>Email</label>
-                                        <p><?php echo $_SESSION['email'] ?></p>
-                                        <label>Lastname</label>
-                                        <p class="text-danger">Unknown</p>
-                                        <label>Phone Number</label>
-                                        <p class="text-danger">Unknown</p>
+                                        <div class="rowPP">
+                                            <label>Email</label>
+                                            <p class="bg-light"><?php echo $_SESSION['email'] ?></p>
+                                            <label>Lastname</label>
+                                            <p class="text-danger bg-light">Unknown</p>
+                                            <label>Phone Number</label>
+                                            <p class="text-danger bg-light">Unknown</p>
+                                        </div>
                                     </div>
 
                                 </div>
                                 <div class="rowProfile row">
                                     <div class="col-12 col-lg-3">
                                         <div class="buuton">
-                                            <button data-bs-toggle="modal" data-bs-target="#update" id="btn_DisplyDataProfile" class="btn btn-sm btn-dark mx-1 mb-3">Edit info</button>
+                                            <button data-bs-toggle="modal" data-bs-target="#update" id="btn_DisplyDataProfile" class="btn btn-secondary btn-sm mx-1 mb-3"><i class="bi bi-pencil-square"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -181,14 +183,14 @@
             <!-- Modal Start -->
             <section>
                 <div class="container">
-                    <div class="modal mt-4" id="update">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content mt-4">
+                    <div class="modal mt-5" id="update">
+                        <div class="modal-dialog">
+                            <div class="modal-content mt-5">
                                 <div class="modal-body">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="form-area bg-white rounded-4">
-                                        <h1 class="text-center text-warning">Complete your Information</h1>
+                                        <h2 class="text-center">Complete your Information</h2>
                                         <div class="mb-1 mt-4">
                                             <label>Firstname</label>
                                             <input type="text" id="fname" class="form-control" placeholder="Enter First Name">
@@ -212,8 +214,8 @@
                                             <label>Address</label>
                                             <input type="text" id="address" class="form-control" placeholder="Enter Address">
                                         </div>
-                                        <div class="mb-1">
-                                            <button id="btn_insertEditProfile" class="btn btn-primary mt-3 text-dark">Update</button>
+                                        <div class="mb-1 mt-3 text-center">
+                                            <button id="btn_insertEditProfile" class="btn-order">Update</button>
                                         </div>
                                     </div>
                                 </div>

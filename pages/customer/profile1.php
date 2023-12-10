@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../css/style/customer/profile.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>Profile | Page</title>
 </head>
@@ -33,7 +33,7 @@
     <div class="main-container d-flex">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="product.php"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -45,7 +45,7 @@
                             <a class="nav-link" href="product.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer1/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer1/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about1.php">About Us</a>
@@ -139,7 +139,7 @@
             <!-- End Bottom Tab -->
 
             <!-- Start Body -->
-            <section class="Profile mt-5 pt-5 bg-light">
+            <section class="Profile mt-5 pt-5">
                 <div class="container">
                      <div class="rounded">
                          <div class="py-2 px-3 bg-white rounded">
@@ -151,13 +151,13 @@
                                 <div class="col-12 col-lg-5">
                                     <div>
                                         <label class="fw-bold text-muted">Username</label>
-                                        <p class="text-capitalize"><?php echo $_SESSION['username'] ?></p>
+                                        <p class="text-capitalize bg-light"><?php echo $_SESSION['username'] ?></p>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-5">
                                     <div>
                                         <label class="fw-bold text-muted">Email</label>
-                                        <p><?php echo $_SESSION['email'] ?></p>
+                                        <p class="bg-light"><?php echo $_SESSION['email'] ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -173,9 +173,9 @@
             <!-- Modal Start -->
             <section>
                 <div class="container">
-                    <div class="modal mt-4" id="update">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content mt-4">
+                    <div class="modal mt-5" id="update">
+                        <div class="modal-dialog">
+                            <div class="modal-content mt-5">
                                 <div class="modal-body">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close">

@@ -19,7 +19,7 @@
         ($row['status'] == "Offline now") ? $offline = "offline" : $offline = "";
 
 
-			$output .= '<a class="text-decoration-none" href="../chatCustomer1/chatArea.php?user_id='.$row['user_id'] .' ">
+			$output .= '<a class="text-decoration-none" href="../chatCustomer/chatArea.php?user_id='.$row['user_id'] .' ">
 							<div class="content d-flex align-items-center">
 								<img src="../../uploads/profileImage/' . $row['p_image'] . '">
 								<div class="details pt-3">

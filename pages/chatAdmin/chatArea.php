@@ -15,14 +15,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="../../bootstrap-5.3.2-dist/css/bootstrap.css">
+    <!-- DOWNLOADED CSS -->
+    <link rel="stylesheet" href="../../bootstrap/boots.css">
+	<link rel="stylesheet" href="../../fontawesome/all.min.css">
+	<link rel="stylesheet" href="../../fontawesome/fontawesome.min.css">
     <link rel="stylesheet" href="../../bootstrap-icons-1.11.1/bootstrap-icons.css">
+
     <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="../chatAdmin/chat.css">
     <link rel="stylesheet" href="../chatAdmin/style.css">
     <link rel="stylesheet" href="../../css/style/admin/mobile.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
     <title>Admin Chat Area | Page</title>
 
@@ -38,7 +41,7 @@
                 <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i
                         class="bi bi-justify"></i></button>
             </div>
-            <p class="text-dark text-center mt-3 session-admin"><?php echo $_SESSION['username']?><span>
+            <p class="text-center text-white text-uppercase mt-3 session-admin"><?php echo $_SESSION['username']?><span>
                 </span></p>
             <hr class="h-color mx-1">
             <div class="py-1">
@@ -79,10 +82,7 @@
 
                 <hr class="h-color mx-1">
                 <ul class="list-unstyled px-3">
-                    <li class="text-white mb-2">
-                        <i class="bi bi-box-arrow-right text-dark"></i><a class="a text-decoration-none p-2 text-danger fw-bold"
-                        id="btn-logout">LOG OUT</a>
-                    </li>
+                    <button type="button" class="dropdown-item text-uppercase fw-bold" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2 text-dark"></i></button>
                 </ul>
             </div>
         </div>
@@ -91,7 +91,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <div class="d-flex justify-content-space-between">
-                        <img class="logo" src="../../images/CSE.png">
+                        <img class="logo" src="../../images/logo.png">
                         <button class="btn px-1 py0 open-btn"><i class="bi bi-justify d-md-none d-block"></i></button>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=" #navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,7 @@
 			<div class="body">
         		<div class="wrappers pt-5">
         			<section class="chat-area">
-        				<header class="chat-header">
+        				<header class="chat-header rounded">
         					<?php 
         						include '../chatAdmin/config.php';
         						$user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
@@ -126,7 +126,7 @@
         						}
 
         					?>
-        					<a class="back-icon" href="../chatAdmin/chat.php"><i class="bi bi-arrow-left"></i></a>
+        					<a class="back-icon" href="../chatAdmin/index.php"><i class="bi bi-arrow-left"></i></a>
         					<img  src="../../uploads/profileImage/<?php echo $row['p_image'];?>" class="ClickImage">
         					<div class="details">
         						<span class="fw-bold text-capitalize"><?php echo $row['username'];?></span>
@@ -142,7 +142,6 @@
         					<input type="text" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
         					<input type="text" name="message" class="input-field rounded-5" placeholder="Type a message here...">
         					<button class="mx-2"><i class="bi bi-telegram"></i></button>
-        					<button><i class="bi bi-image"></i></button>
         				</form>
         			</section>
         		</div>
@@ -155,28 +154,17 @@
 	<script src="../chatAdmin/chat.js"></script>
 	<script src="../../plugins/privacy/logout.js"></script>
     
-    <!--Start Bootstrap -->
-    <script src="../../bootstrap-5.3.2-dist/js/bootstrap.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- End Bootstrap -->
+    <!-- DOWNLOADED JS -->
+    <script src="../../toaster/toastr.min.js"></script>
+    <script src="../../sweetalert/alert.js"></script>
+    <script src="../../bootstrap/boots.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('.open-btn').on('click', function () {
-                $('.sidebar').addClass('active');
-            });
-
-            $('.close-btn').on('click', function () {
-                $('.sidebar').removeClass('active');
-            });
-
-            $(document).on('click', function (event) {
-               
-                if (!$(event.target).closest('.sidebar, .open-btn').length) {
-                    
-                    $('.sidebar').removeClass('active');
-                }
-            });
+        $('.open-btn').on('click', function () {
+            $('.sidebar').addClass('active');
+        });
+        $('.close-btn').on('click', function () {
+            $('.sidebar').removeClass('active');
         });
     </script>
 </body>

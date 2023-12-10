@@ -2,17 +2,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
 }
 /* Sidebar & Navbar Start */
 .sidebar {
-    background-color: #02bd9e;
+    background-color: #69c7c9;
     min-width: 200px;
     max-width: 200px;
     transition: all 0.2s;
 }
 .navbar {
-    background-color: #02bd9e;
+    background-color: #69c7c9;
 }
 .content {
     width: 100%;
@@ -28,12 +28,12 @@
     color: #FD7F2C;
 }
 .a {
-    color: black;
+    color: white;
     font-size: 17.5px;
     text-transform: uppercase;
 }
 .a:hover {
-    color: #4b8b6c;
+    color: #D2F7D6;
 }
 
 .logo {
@@ -45,13 +45,21 @@
 }
 
 .nav-item>.nav-link {
-    color: black;
-    font-size: 20px;
+    color: white;
+    font-size: 17px;
     
 }
 .nav-item>.nav-link:hover {
-    color: gray;
-    font-size: 20px;
+    color: #D2F7D6;
+    font-size: 17px;
     
 }
+#btn-logout {
+	color: red;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+	text-transform: uppercase;
+    background: rgba(0,0,0,0.1);
+  }
 /* Sidebar & Navbar End */

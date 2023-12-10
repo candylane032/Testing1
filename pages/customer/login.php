@@ -17,14 +17,14 @@
 	<link rel="stylesheet" href="../../css/style/responsive.css">
 	<link rel="stylesheet" href="../../css/style/customer/register.css">
 	<link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
 </head>
 <body>
 	<!-- Navbar Start -->
 	<nav class="navbar navbar-expand-lg fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt=""></a>
+			<a class="navbar-brand" href="./"><img src="../../images/logo.png" class="logo" alt=""></a>
 			<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
 				class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
 				<span class="navbar-toggler-icon"></span>
@@ -49,6 +49,7 @@
 		</div>
 	</nav>
 	<!-- Navbar End -->
+	
 	<!-- Login Start -->
 	<section class="register section-padding">
 		<div class="container mt-3">
@@ -72,7 +73,7 @@
 						</div>
 						<div class="mb-3 text-center">
 						<div class="col  mb-2">
-							<button id="btnlogIn" class="btn-in">Login</button>
+							<button id="btnlogIn" class="btn-in text-white">Login</button>
 						</div>
 							<p class="mt-3">Don't Have an Account? <i class="bi bi-arrow-right"></i><a class="fw-bold text-decoration-none" href="register.php"> Register</a></p>
 						</div>
@@ -85,6 +86,7 @@
 	<!-- Login End -->
 	<script src="../../plugins/privacy/jquery.js"></script>
 	<script src="../../plugins/privacy/login.js"></script>
+	<script src="../../plugins/bundle/collapse.js" ></script>
 	
 	 <!-- DOWNLOADED JS -->
 	 <script src="../../toaster/toastr.min.js"></script>

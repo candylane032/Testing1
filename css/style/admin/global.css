@@ -2,32 +2,38 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
 }
+
 /* Sidebar & Navbar Start */
 .sidebar {
-    background-color: #0ce4c0;
+    background-color: #69c7c9;
     min-width: 200px;
     max-width: 200px;
     transition: all 0.2s;
 }
+
 .navbar {
-    background-color: #0ce4c0;
+    background-color: #69c7c9;
 }
+
 .content {
     min-height: 100vh;
     width: 100%;
 }
+
 .header-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: white;
 }
+
 .header-box>h1 {
     font-size: 17px;
     color: #FD7F2C;
 }
+
 .username {
     color: white;
     font-size: 17px;
@@ -36,9 +42,10 @@
 
 .a {
     color: white;
-    font-size: 17.5px;
+    font-size: 17px;
     text-transform: uppercase;
 }
+
 .a:hover {
     color: #D2F7D6;
 }
@@ -47,6 +54,7 @@
     width: 50px;
     margin-left: 5px;
 }
+
 .bi {
     color: black;
     font-size: large;
@@ -54,41 +62,77 @@
 
 .nav-item>.nav-link {
     color: white;
-    font-size: 20px;
-    
+    font-size: 17px;
+
 }
+
 .nav-item>.nav-link:hover {
     color: #D2F7D6;
-    font-size: 20px;
-    
+    font-size: 17px;
+
 }
+
+.btn-update {
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: #1080ca;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-update:hover {
+    background-color: #309ee7;
+}
+
+.btn-status {
+    padding: 6px 10px;
+    font-size: 14px;
+    background-color: #0ec6c9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-status:hover {
+    background-color: #47d6d8;
+}
+
 .AddButton {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .btn-info {
     display: flex;
     margin: auto;
 }
+
 /* Sidebar & Navbar End */
 
 .img-area .fish {
     width: 100%;
-    height: 35vh;
+    height: 40vh;
     border-radius: 5px;
 }
 
 .card {
     border-radius: 7px;
-    background-color: hsl(0, 0%, 98%);
+    background-color: hsl(0, 0%, 99%);
     border: none;
     margin-bottom: 25px;
 }
 
 #btn-logout {
-    color: #8A0F1E ;
+	color: red;
+    border: none;
     cursor: pointer;
-}
+    font-size: 17px;
+	text-transform: uppercase;
+    background: rgba(0,0,0,0.1);
+  }
 
 .modalImage {
     height: 100px;
@@ -108,29 +152,50 @@
     height: 200px;
     border-radius: 50%;
 }
+
 #chart {
-    width: 400px; 
+    width: 400px;
     height: 200px;
     display: flex;
-    margin: 5%;
+    padding: 5%;
+    gap: 20%;
     
-  }
-  #myChartToday{
-    background:rgb(216, 255, 231);
+}
+
+#myChartToday {
+    background: rgba(0,0,0,0.1);
     height: 100%;
-    margin: 5%;
-  }
-  #myChartDaily{
-    background:rgb(255, 254, 181);
+}
+
+#myChartDaily {
+    background: rgba(0,0,0,0.1);
     height: 100%;
-    margin: 5%;
+
+}
+
+#myChartMonthly {
+    background: rgba(0,0,0,0.1);
+    height: 100%;
+
+}
+
+#table-container {
+    height: 190px;
+    overflow-y: scroll;
   }
-  #myChartMonthly{
-    background:rgb(255, 188, 188);
-    height: 100%; 
-    margin: 5%;
-  }
 
-
-
-
+.overflow {
+    margin-top: 50px;
+	height: 80vh;
+	overflow-y: scroll;
+}
+.chat {
+    height: 70vh;
+	overflow-y: scroll;
+}
+.btn-msg {
+    margin-left: -55%;
+    margin-bottom: 100%;
+    padding: 2px 15px 2px 15px;
+    border: none;
+}

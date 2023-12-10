@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../css/style/global.css">
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>Gallery | Page</title>
 </head>
@@ -25,7 +25,7 @@
     <div class="main-container d-flex">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="index.php"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -37,7 +37,7 @@
                             <a class="nav-link" href="index.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about1.php">About Us</a>
@@ -81,35 +81,35 @@
                             <ul class="nav__list list-unstyled">
 
                                 <li class="nav__item">
-                                    <a href="product.php" class="nav__link text-decoration-none">
+                                    <a href="index.php" class="nav__link text-decoration-none">
                                         <i class="bi bi-shop nav__icon"></i>
                                         <span class="nav__name">Home</span>
                                     </a>
                                 </li>
 
                                 <li class="nav__item">
-                                    <a href="gallery1.php" class="nav__link text-decoration-none">
+                                    <a href="gallery.php" class="nav__link text-decoration-none">
                                         <i class="bi bi-images nav__icon"></i>
                                         <span class="nav__name">Gallery</span>
                                     </a>
                                 </li>
 
                                 <li class="nav__item">
-                                    <a href="about1.php" class="nav__link text-decoration-none">
+                                    <a href="about.php" class="nav__link text-decoration-none">
                                         <i class="bi bi-people-fill nav__icon"></i>
                                         <span class="nav__name">About</span>
                                     </a>
                                 </li>
 
                                 <li class="nav__item">
-                                    <a href="services1.php" class="nav__link text-decoration-none">
+                                    <a href="services.php" class="nav__link text-decoration-none">
                                         <i class="bi bi-gear-wide nav__icon"></i>
                                         <span class="nav__name">Services</span>
                                     </a>
                                 </li>
 
                                 <li class="nav__item">
-                                    <a href="profile1.php" class="nav__link text-decoration-none">
+                                    <a href="profile.php" class="nav__link text-decoration-none">
                                         <i class="bi bi-person-circle nav__icon"></i>
                                         <span class="nav__name">Profile</span>
                                     </a>

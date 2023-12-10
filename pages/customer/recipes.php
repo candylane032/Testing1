@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../../css/style/global.css">
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>Recipes | Page</title>
 </head>
@@ -25,7 +25,7 @@
     <div class="main-container d-flex">
     <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="index.php"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -37,7 +37,7 @@
                             <a class="nav-link" href="index.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">About Us</a>
@@ -121,55 +121,6 @@
             </div>
         <!-- Navbar End-->
 
-        <!-- Start Bottom Tab -->
-        <div class="content">
-            <div class="bottom-navigation">
-                <nav>
-                    <div class="nav container">
-                        <div class="nav__menu" id="nav-menu">
-                            <ul class="nav__list list-unstyled">
-
-                                <li class="nav__item">
-                                    <a href="../../pages/customer/home.php" class="nav__link text-decoration-none">
-                                        <i class="bi bi-house-door-fill nav__icon"></i>
-                                        <span class="nav__name">Home</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav__item">
-                                    <a href="../../pages/customer/gallery.php" class="nav__link text-decoration-none">
-                                        <i class="bi bi-images nav__icon"></i>
-                                        <span class="nav__name">Gallery</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav__item">
-                                    <a href="../../pages/customer/about.php" class="nav__link text-decoration-none">
-                                        <i class="bi bi-people-fill nav__icon"></i>
-                                        <span class="nav__name">About</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav__item">
-                                    <a href="../../pages/customer/services.php" class="nav__link text-decoration-none">
-                                        <i class="bi bi-gear-wide nav__icon"></i>
-                                        <span class="nav__name">Services</span>
-                                    </a>
-                                </li>
-
-                                <li class="nav__item">
-                                    <a href="../../pages/customer/profile.php" class="nav__link text-decoration-none">
-                                        <i class="bi bi-person-circle nav__icon"></i>
-                                        <span class="nav__name">Profile</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <!-- End Bottom Tab -->
-
             <!-- Start Body -->
             <section class="products pb-5 mt-5" id="products">
                 <div class="container">
@@ -193,9 +144,9 @@
             <!-- Modal Start -->
             <section>
                 <div class="container">
-                    <div class="modal mt-4" id="recipes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered ">
-                            <div class="modal-content mt-4">
+                    <div class="modal" id="recipes" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content overflow ">
                                 <div class="modal-body">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>

@@ -16,14 +16,14 @@
 	<link rel="stylesheet" href="../../css/style/responsive.css">
 	<link rel="stylesheet" href="../../css/style/customer/register.css">
 	<link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
 </head>
 <body>
 	<!-- Navbar Start -->
 	<nav class="navbar navbar-expand-lg fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt=""></a>
+			<a class="navbar-brand" href="./"><img src="../../images/logo.png" class="logo" alt=""></a>
 			<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
 				class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
 				<span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
 							<span class="input-group-text" onclick="togglePassword('cpass')"><i class="bi bi-eye-fill"></i></span>
 						</div>
 						<div class="mb-3 text-center">
-						<button id="btn-reg" class="btn btn-md btn-success">Sign up</button>
+						<button id="btn-reg" class="btn-started text-white">Sign up</button>
 							<p class="mt-3">Already Have an Account? <i class="bi bi-arrow-right"></i> <a class="fw-bold text-decoration-none" href="login.php">Sign In</a></p>
 						</div>
 					</div>
@@ -85,6 +85,7 @@
 
 	<script src="../../plugins/privacy/jquery.js"></script>
 	<script src="../../plugins/privacy/register.js"></script>
+	<script src="../../plugins/bundle/collapse.js" ></script>
 	
 	<!-- DOWNLOADED JS -->
 	<script src="../../toaster/toastr.min.js"></script>

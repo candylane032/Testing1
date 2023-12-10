@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             receiptLabel.style.display = "none";
             pReceiptInput.style.display = "none";
-        } 
+        }
         else {
             paymentLabel.style.display = "block";
             if (selectedOption === "gcash") {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             receiptLabelReserve.style.display = "none";
             pReceiptInputReserve.style.display = "none";
-        } 
+        }
         else {
             paymentLabelReserve.style.display = "block";
             if (selectedOptionReserve === "gcash") {

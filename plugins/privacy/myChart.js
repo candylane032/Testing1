@@ -1,8 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function () {
     chartToday();
     chartDaily();
     chartMonthly();
-    setInterval(function() {
+    setInterval(function () {
         chart();
     }, 24 * 60 * 60 * 1000);
 });
@@ -14,36 +14,68 @@ var chartToday = () => {
         data: { choice: 'chartToday' },
         success: function (data) {
             var chartdata = JSON.parse(data);
-            var dataValues = chartdata.map(row => row.reserve_kilo);
+            var dataValues = chartdata.map(row => row.combined_total);
             var highestValue = Math.max(...dataValues);
-            
+            var currentDate = new Date();
+            var dateInWords = formatDateInWords(currentDate);
+
             var ctx = document.getElementById('myChartToday').getContext('2d');
+
+            ctx.canvas.width = 600;
+            ctx.canvas.height = 600;
+
             new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: chartdata.map(row => row.pname),
                     datasets: [{
-                        label: 'Sales Today [' + chartdata[0].Date + ']',
+                        label: 'Sales Today: ' + dateInWords + '',
                         data: dataValues,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        pointRadius: 4,  
-                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: '#9ed3fe',
+                        borderColor: '#55d6ff',
+                        borderWidth: 1,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#4bc0c0',
                         pointBorderColor: '#fff',
-                        pointHoverRadius: 6,
-                        pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#4bc0c0',
                         pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
-                    }],
-                    
+                    }]
                 },
                 options: {
                     scales: {
                         y: {
-                            suggestedMin: 0,
-                            suggestedMax: highestValue
+                            suggestedMin: 10,
+                            suggestedMax: highestValue,
+                            ticks: {
+                                color: 'white'
+                            }
                         },
-                    }
+
+                        x: {
+                            ticks: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            },
+                            margin: {
+                                bottom: 20
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 10,
+                            top: 5,
+                            bottom: 5
+                        },
+                    },
                 }
             });
         },
@@ -53,6 +85,13 @@ var chartToday = () => {
     });
 };
 
+function formatDateInWords(date) {
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+
+
 var chartDaily = () => {
     $.ajax({
         type: "POST",
@@ -60,10 +99,14 @@ var chartDaily = () => {
         data: { choice: 'chartDaily' },
         success: function (data) {
             var chartdata = JSON.parse(data);
-            var dataValues = chartdata.map(row => row.reserve_kilo);
+            var dataValues = chartdata.map(row => row.combined_total);
             var highestValue = Math.max(...dataValues);
 
             var ctx = document.getElementById('myChartDaily').getContext('2d');
+
+            ctx.canvas.width = 600;
+            ctx.canvas.height = 600;
+
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -71,14 +114,14 @@ var chartDaily = () => {
                     datasets: [{
                         label: 'Daily Sales',
                         data: dataValues,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        pointRadius: 4,  
-                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: '#9ed3fe',
+                        borderColor: '#55d6ff',
+                        borderWidth: 1,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#4bc0c0',
                         pointBorderColor: '#fff',
-                        pointHoverRadius: 6,
-                        pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#4bc0c0',
                         pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
                     }]
                 },
@@ -86,9 +129,36 @@ var chartDaily = () => {
                     scales: {
                         y: {
                             suggestedMin: 0,
-                            suggestedMax: highestValue
+                            suggestedMax: highestValue,
+                            ticks: {
+                                color: 'white'
+                            }
                         },
-                    }
+
+                        x: {
+                            ticks: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            },
+                            margin: {
+                                bottom: 20
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 10,
+                            top: 5,
+                            bottom: 5
+                        },
+                    },
                 }
             });
         },
@@ -105,10 +175,14 @@ var chartMonthly = () => {
         data: { choice: 'chartMonthly' },
         success: function (data) {
             var chartdata = JSON.parse(data);
-            var dataValues = chartdata.map(row => row.reserve_kilo);
+            var dataValues = chartdata.map(row => row.combined_total);
             var highestValue = Math.max(...dataValues);
 
             var ctx = document.getElementById('myChartMonthly').getContext('2d');
+
+            ctx.canvas.width = 600;
+            ctx.canvas.height = 600;
+            
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -116,14 +190,14 @@ var chartMonthly = () => {
                     datasets: [{
                         label: 'Monthly Sales',
                         data: dataValues,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        pointRadius: 4,  
-                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: '#9ed3fe',
+                        borderColor: '#55d6ff',
+                        borderWidth: 1,
+                        pointRadius: 6,
+                        pointBackgroundColor: '#4bc0c0',
                         pointBorderColor: '#fff',
-                        pointHoverRadius: 6,
-                        pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)',
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#4bc0c0',
                         pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
                     }]
                 },
@@ -131,9 +205,36 @@ var chartMonthly = () => {
                     scales: {
                         y: {
                             suggestedMin: 0,
-                            suggestedMax: highestValue
+                            suggestedMax: highestValue,
+                            ticks: {
+                                color: 'white'
+                            }
                         },
-                    }
+
+                        x: {
+                            ticks: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            },
+                            margin: {
+                                bottom: 20
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            left: 10,
+                            right: 10,
+                            top: 5,
+                            bottom: 5
+                        },
+                    },
                 }
             });
         },
@@ -142,4 +243,3 @@ var chartMonthly = () => {
         }
     });
 };
-

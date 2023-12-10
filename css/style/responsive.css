@@ -104,7 +104,7 @@
 		align-content: center;
 		border-radius: 1rem 1rem 0 0;
 		transition: .4s;
-		background-color: #9df8dd;
+		background: linear-gradient(90deg, rgba(254,254,254,1) 4%, rgb(222, 250, 248) 50%);
 		z-index: 9999;
 	}
 
@@ -121,17 +121,12 @@
 		row-gap: .25rem;
 	}
 
-	.nav__icon:active {
-		color: #7C2500;
-	}
-
 	.bottom-navigation {
 		display: block;
 	}
 
 	/* Bottom Tab End */
-	
-	.container {
+	.foot {
 		text-align: center;
 	}
 	.form-area {

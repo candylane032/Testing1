@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../../css/style/admin/global.css">
     <link rel="stylesheet" href="../../css/style/admin/mobile.css">
     <link rel="stylesheet" href="../../css/style/admin/adminOrder.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
     <title>Admin Reservation List | Page</title>
 
@@ -68,7 +68,7 @@
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-chat-dots-fill"></i><a class="a text-decoration-none px-2 " 
-                        href="../../pages/chatAdmin/chat.php">Message</a>
+                        href="../../pages/chatAdmin/index.php">Message</a>
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-person-fill"></i><a class="a text-decoration-none px-2 " 
@@ -78,7 +78,7 @@
 
                 <hr class="h-color mx-1">
                 <ul class="list-unstyled px-3">
-                    <button type="button" class="dropdown-item text-uppercase fw-bold bg-white r" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2"></i></button>
+                    <button type="button" class="dropdown-item text-uppercase fw-bold" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2"></i></button>
                 </ul>
             </div>
         </div>
@@ -87,7 +87,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <div class="d-flex justify-content-space-between">
-                        <img class="logo" src="../../images/CSE.png">
+                        <img class="logo" src="../../images/logo.png">
                         <button class="btn px-1 py0 open-btn"><i class="bi bi-justify d-md-none d-block"></i></button>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=" #navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,7 +119,7 @@
                             <div class="col-12 col-lg-12">
                                 <table class="table table-light">
                                     <thead>
-                                        <th>ID</th>
+                                        <th>COUNT</th>
                                         <th>UNAME</th>
                                         <th>FNAME</th>
                                         <th>LNAME</th>
@@ -127,7 +127,6 @@
                                         <th>STATUS</th>
                                         <th>DELIVERY</th>
                                         <th>TIME & DATE</th>
-                                        <th>DURATION</th>
                                         <th>ACTION</th>
                                     </thead>
                                     <tbody id="displayReservesPending">
@@ -146,12 +145,12 @@
                 <div class="container">
                     <div class="modal mt-4" id="reservesbyid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
-                            <div class="modal-content mt-4">
+                            <div class="modal-content overflow">
                                 <div class="modal-body">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="form-area bg-white rounded-4">
-                                        <h1 class="text-center text-warning">Review Reservation</h1>
+                                        <h2 class="text-center mb-4">Review Reservation</h2>
                                         <div id="displayReservesDataById">
                                             
                                             

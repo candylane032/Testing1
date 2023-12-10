@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="../../css/style/admin/global.css">
     <link rel="stylesheet" href="../../css/style/admin/mobile.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
     <title>Admin Dashboard | Page</title>
 
 </head>
 
-<body>
+<body style="background-color: #002d6c;">
     <!-- Start Side bar -->
     <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
@@ -68,7 +68,7 @@
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-chat-dots-fill"></i><a class="a text-decoration-none px-2 " 
-                        href="../../pages/chatAdmin/chat.php">Message</a>
+                        href="../../pages/chat/admin/ChatA.php">Message</a>
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-person-fill"></i><a class="a text-decoration-none px-2 " 
@@ -78,7 +78,7 @@
 
                 <hr class="h-color mx-1">
                 <ul class="list-unstyled px-3">
-                    <button type="button" class="dropdown-item text-uppercase fw-bold bg-white" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2"></i></button>
+                    <button type="button" class="dropdown-item text-uppercase fw-bold" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2"></i></button>
                 </ul>
             </div>
         </div>
@@ -87,7 +87,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <div class="d-flex justify-content-space-between">
-                        <img class="logo" src="../../images/CSE.png">
+                        <img class="logo" src="../../images/logo.png">
                         <button class="btn px-1 py0 open-btn"><i class="bi bi-justify d-md-none d-block"></i></button>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=" #navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,13 +108,15 @@
                     </div>
                 </div>
             </nav>
-            <section>
-                <h1 class="p-3">Dashboard</h1>
-            <div id="chart">
-                <canvas id="myChartToday"></canvas>
-                <canvas id="myChartDaily"></canvas>
-                <canvas id="myChartMonthly"></canvas>
-            </div>  
+            <section class="Dashboard">
+                <div class="container">
+                    <h1 class="m-3 text-white">Dashboard</h1>
+                    <div id="chart">
+                        <canvas id="myChartToday"></canvas>
+                        <canvas id="myChartDaily"></canvas>
+                        <canvas id="myChartMonthly"></canvas>
+                    </div> 
+                </div> 
             </section>
         </div>
     </div>
@@ -163,6 +165,7 @@
             });
         });
     </script>
+    
 </body>
 
 </html>

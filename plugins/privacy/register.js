@@ -12,15 +12,16 @@ function togglePassword(inputId) {
     }
 }
 
-$('#btn-reg').click(function(){
+$('#btn-reg').click(function () {
     checking();
-}); 
-
+});
 
 var checking = () => {
     if ($('#username').val() != "" && $('#email').val() != "" && $('#password').val() != "" && $('#cpass').val() != "") {
         if ($('#password').val().length <= 6) {
-            toastr.error('Password must be greater than 6 characters.');
+            toastr.error('Password must contain an uppercase letter and at least one special character..');
+        } else if (!hasUpperCase($('#password').val()) || !hasSpecialChar($('#password').val())) {
+            toastr.error('Password must contain an uppercase letter and at least one special character.');
         } else if ($('#password').val() != $('#cpass').val()) {
             toastr.error('Password not matched!');
         } else if (!isValidEmail($('#email').val())) {
@@ -29,8 +30,16 @@ var checking = () => {
             req();
         }
     } else {
-        toastr.error("Please fill in empty field(s)");
+        toastr.error("Please fill in all the required fields.");
     }
+}
+
+function hasUpperCase(str) {
+    return /[A-Z]/.test(str);
+}
+
+function hasSpecialChar(str) {
+    return /[!@#$%^&*(),.?":{}|<>]/.test(str);
 }
 
 function isValidEmail(email) {

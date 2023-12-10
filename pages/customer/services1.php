@@ -14,7 +14,7 @@
      <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/style/global.css">
     <link rel="stylesheet" href="../../css/style/responsive.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>Services | Page</title>
 </head>
@@ -24,7 +24,7 @@
     <div class="main-container d-flex">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="product.php"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -36,7 +36,7 @@
                             <a class="nav-link" href="product.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer1/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer1/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about1.php">About Us</a>
@@ -172,7 +172,7 @@
                                 <div class="card-body">
                                     <div class="img-area mb-2 text-center"><img alt="" class="img-fluid w-25"
                                             src="../../images/scaling.png"></div>
-                                    <h2 class="card-title text-center mb-2">Fre Fish Scaling</h2>
+                                    <h2 class="card-title text-center mb-2">Free Fish Scaling</h2>
                                     <hr>
                                     <p class="lead">Enjoy hassle-free seafood preparation with our free scaling service
                                         for all fish purchases.</p>
@@ -185,7 +185,7 @@
             <!-- End Body -->
         </div>
     </div>
-
+  
     <script src="../../plugins/privacy/jquery.js"></script>
     <script src="../../plugins/privacy/logout.js"></script>
     <script src="../../plugins/bundle/script.js"></script>

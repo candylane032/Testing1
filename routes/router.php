@@ -10,7 +10,7 @@ require_once("basket.php");
 require_once("order.php");
 require_once("history.php");
 require_once("chart.php");
-
+require_once("chatA.php");
 
 
 
@@ -73,7 +73,8 @@ if (isset($_POST['choice'])) {
             $pname = $_POST['pname'];
             $img = uploadImage(); 
             $p_price = $_POST['p_price'];
-            echo $backend->doAddProduct($pname, $img, $p_price);
+            $p_desc = $_POST['p_desc'];
+            echo $backend->doAddProduct($pname, $img, $p_price, $p_desc);
             break; 
         case 'DisplayProductAdmin':
             $backend = new product();
@@ -96,9 +97,10 @@ if (isset($_POST['choice'])) {
             $backend = new product();
             $pname = $_POST['pname'];
             $p_price = $_POST['p_price'];
+            $p_desc = $_POST['p_desc'];
             $product_id = $_POST['product_id'];
             $img = uploadImage(); 
-            echo $backend->doUpdateProduct($pname, $img, $p_price, $product_id);
+            echo $backend->doUpdateProduct($pname, $img, $p_price, $p_desc,  $product_id);
             break;
         case 'DisplayProductStockModal':
             $backend = new product();
@@ -122,6 +124,12 @@ if (isset($_POST['choice'])) {
             $product_id = $_POST['product_id'];
             $user_id = $_POST['user_id'];
             echo $backend->doDisplayPnamePnumPurchaseModal($product_id,$user_id);
+            break;
+        case 'desc':
+            $backend = new product();
+            $viewProdId = $_POST['viewProdId'];
+            $viewUserId = $_POST['viewUserId'];
+            echo $backend->desc($viewProdId,$viewUserId);
             break;
         case 'OrderProductByCod':
             $backend = new product();
@@ -286,6 +294,15 @@ if (isset($_POST['choice'])) {
 
 
         //history
+        case 'DisplayReserveByIdHistory':
+            $backend = new history();
+            $reserve_id = $_POST['reserve_id'];
+            echo $backend->doDisplayReserveByIdHistory($reserve_id);
+            break;
+        case 'DisplayReservedPaid':
+            $backend = new history();
+            echo $backend->doDisplayReservedPaid();
+            break;
         case 'SelectUserIdProfileToCancelled':
             $backend = new history();
             $user_id = $_SESSION['user_id'];
@@ -346,6 +363,53 @@ if (isset($_POST['choice'])) {
             echo $backend->doViewOrder($order_id);
             break;
 
+        //chat 
+        case 'chatC':
+            $backend = new chatA();
+            $userId = $_SESSION['user_id'];
+            $id = $_POST['id'];
+            echo $backend->chatA($userId, $_POST['message'],$id);
+            break;
+        case 'chatA':
+            $backend = new chatA();
+            $userId = $_SESSION['user_id'];
+            $id = $_POST['messageId'];
+            $msg = $_POST['msg'];
+            $time = $_POST['time'];
+            echo $backend->chatA($userId, $_POST['message'], $id, $msg, $time);        
+            break;
+        case 'readChat':
+            $backend = new chatA();
+            echo $backend->readChat();
+            break;
+        case 'chatACheckId':
+            $backend = new chatA();
+            $userId = $_SESSION['user_id'];
+            echo $backend->chatACheckId($userId);
+            break;
+        case 'messageById':
+            $backend = new chatA();
+            $messageId = $_POST['messageId'];
+            $msg = $_POST['msg'];
+            $time = $_POST['time'];
+            echo $backend->messageById($messageId,$msg,$time);
+            break;
+        case 'searchUserss':
+            $backend = new chatA();
+            echo $backend->searchUserss();
+            break;
+        case 'chatToAdmin':
+            $backend = new chatA();
+            $userId = $_SESSION['user_id'];
+            $id = $_POST['messageId'];
+            echo $backend->chatToAdmin($userId, $_POST['message'], $id);        
+            break;
+        case 'readChatToAdmin':
+            $backend = new chatA();
+            $userId = $_SESSION['user_id'];
+            echo $backend->readChatToAdmin($userId);
+            break;
+
         //chart
         case 'chartToday':
             $backend = new chart();
@@ -368,19 +432,10 @@ if (isset($_POST['choice'])) {
         default:
             echo "404";
             break;
-    }
+
+}
 }
 
-
-
-
-
-
-
-
-
-
-    
 
 function uploadImage() {
     $targetDirectory = "../uploads/productImage/"; 

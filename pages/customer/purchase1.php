@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
     <link rel="stylesheet" href="../../css/style/customer/customerOrder.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>Purchase | Page</title>
 </head>
@@ -33,7 +33,7 @@
     <div class="main-container d-flex">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="product.php"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -45,7 +45,7 @@
                             <a class="nav-link" href="product.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer1/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer1/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about1.php">About Us</a>
@@ -145,12 +145,11 @@
                         <div class="inner-wrap row p-3">
                             <h1 class=" mb-4 text-center fw-bold mt-5">My Purchase</h1>
                             <div class="AddButton text-end mb-2">
-                                 <button class="btn btn-success btn-sm"><a class="text-decoration-none text-white" href="../chatCustomer1/chat.php">Message Owner</a></button>
+                                 <button class="btn btn-secondary btn-sm"><a class="text-decoration-none text-white" href="../chatCustomer1/index.php">Message Owner</a></button>
                             </div>
                             <div class="col-12 col-lg-12">
                                 <table class="table table-light">
                                     <thead>
-                                        <!-- <th>ID</th> -->
                                         <th>PRODUCT NAME</th>
                                         <th>KILO</th>
                                         <th>TOTAL</th>

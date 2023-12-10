@@ -1,30 +1,40 @@
-/* Responsive Start */
-@media screen and (max-width: 762px) {
-    .bg .container .login-wrap .CapTitle>h1 {
-        font-size: 30px;
-    }
-    #side_nav {
-        margin-left: -250px;
-        position: fixed;
-        min-height: 100vh;
-        z-index: 1;
-    }
-    #side_nav.active {
-        margin-left: 0;
-    }
-    .main-container .sidebar .header-box>h1 {
-        font-size: 14.9px;
-    }
-   /* Fish card Start */
+/* Responsive Mobile Start */
+@media screen and (max-width: 767px) {
+	.bg .container .login-wrap .CapTitle>h1 {
+		font-size: 30px;
+	}
+
+	.capitalize {
+		text-transform: capitalize !important;
+	}
+
+	#side_nav {
+		margin-left: -250px;
+		position: fixed;
+		min-height: 100vh;
+		z-index: 1;
+	}
+
+	#side_nav.active {
+		margin-left: 0;
+	}
+
+	.main-container .sidebar .header-box>h1 {
+		font-size: 14.9px;
+	}
+
+	/* Fish card Start */
 	.card {
 		margin-bottom: 30px;
 	}
+
 	.img-area img {
 		width: 100%;
 	}
+
 	/* Fish card End */
 
-    /* Table Start */
+	/* Table Start */
 	table thead {
 		display: none;
 	}
@@ -46,6 +56,7 @@
 		padding-left: 50%;
 		position: relative;
 	}
+
 	table td:before {
 		content: attr(data-label);
 		position: absolute;
@@ -56,6 +67,7 @@
 		font-size: 14px;
 		text-align: left;
 	}
+
 	/* Table End */
 
 	/* Dashboard Start */
@@ -64,12 +76,37 @@
 		flex-direction: column;
 		width: 100%;
 		max-width: 600px;
-		margin: 0 auto;
 	}
-	#myChartToday {
-		background:rgb(216, 255, 231);
-		width: 100%;
-	}
+
 	/* Dashboard End */
 }
-/* Responsive End */
+
+/* Responsive Mobile End */
+
+/* Laptop Responsive Start */
+@media (min-width: 768px) {
+	#chart {
+		width: 400px;
+		height: 200px;
+		display: flex;
+		padding: 5%;
+		gap: 20%
+	}
+
+	#myChartToday {
+		background: rgba(0,0,0,0.1);
+		height: 100%;
+	}
+
+	#myChartDaily {
+		background: rgba(0,0,0,0.1);
+		height: 100%;
+
+	}
+
+	#myChartMonthly {
+		background: rgba(0,0,0,0.1);
+		height: 100%;
+	}
+}
+/* Laptop Responsive Start */

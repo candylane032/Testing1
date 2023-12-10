@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../../css/style/global.css">
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>History | Page</title>
 </head>
@@ -31,7 +31,7 @@
     <div class="main-container d-flex">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="#"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -43,7 +43,7 @@
                             <a class="nav-link" href="index.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">About Us</a>

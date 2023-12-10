@@ -4,7 +4,9 @@
     justify-content: center;
     flex-direction: column;
 }
-
+.Profile {
+    background: rgb(241, 248, 248);
+}
 .imgProfile {
     width: 200px;
     height: 200px;
@@ -28,6 +30,9 @@
 @media screen and (max-width: 900px) {
     .rowProfile {
         margin-left: -25px;
+    }
+    .rowPP {
+        margin-left: -35px;
     }
 
     #displayDataProfile, .pprof {

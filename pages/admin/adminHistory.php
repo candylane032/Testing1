@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../../css/style/admin/mobile.css">
     <link rel="stylesheet" href="../../css/style/admin/adminOrder.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
 
     <title>Admin History | Page</title>
 
@@ -69,7 +69,7 @@
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-chat-dots-fill"></i><a class="a text-decoration-none px-2 " 
-                        href="../../pages/chatAdmin/chat.php">Message</a>
+                        href="../../pages/chatAdmin/index.php">Message</a>
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-person-fill"></i><a class="a text-decoration-none px-2 " 
@@ -79,7 +79,7 @@
 
                 <hr class="h-color mx-1">
                 <ul class="list-unstyled px-3">
-                    <button type="button" class="dropdown-item text-uppercase fw-bold bg-white" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2"></i></button>
+                    <button type="button" class="dropdown-item text-uppercase fw-bold" id="btn-logout">Logout<i class="bi bi-box-arrow-right mx-2"></i></button>
                 </ul>
             </div>
         </div>
@@ -88,7 +88,7 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <div class="d-flex justify-content-space-between">
-                        <img class="logo" src="../../images/CSE.png">
+                        <img class="logo" src="../../images/logo.png">
                         <button class="btn px-1 py0 open-btn"><i class="bi bi-justify d-md-none d-block"></i></button>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=" #navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,17 +111,23 @@
             </nav>
 
             <!-- Start Body -->
-            <section class="history">
+            <section class="history-order">
+                
                 <div class="container">
                     <div class="history">
                         <div class="inner-wrap row">
-                            <h4 class=" mb-4 text-center fw-bold mt-4">Recent Orders</h4>
+                            <h4 class=" mb-3 text-center fw-bold mt-4">Recent Purchased</h4>
+                            <div class="col-md-4 col-sm-12 mb-2">
+                                <div class="search-container">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Search transaction..." onkeyup="searchProducts()">
+                                </div>
+                            </div>
                             <div class="col-12 col-lg-3">
                             </div>
-                            <div class="col-12 col-lg-12">
+                            <div class="col-12 col-lg-12" id="table-container">
                                 <table class="table table-light">
                                     <thead>
-                                        <th>ID</th>
+                                        <th>Count</th>
                                         <th>UNAME</th>
                                         <th>FNAME</th>
                                         <th>LNAME</th>
@@ -136,23 +142,58 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="history-reserve">
+                <div class="container">
+                    <div class="history">
+                        <div class="inner-wrap row">
+                            <h4 class=" mb-3 text-center fw-bold mt-4">Recent Reservation</h4>
+                            <div class="col-md-4 col-sm-12 mb-2">
+                                <div class="search-container">
+                                    <input type="text" id="searchInput" class="form-control" placeholder="Search transaction..." onkeyup="searchProducts()">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3">
+                            </div>
+                            <div class="col-12 col-lg-12" id="table-container">
+                                <table class="table table-light">
+                                    <thead>
+                                        <th>Count</th>
+                                        <th>UNAME</th>
+                                        <th>FNAME</th>
+                                        <th>LNAME</th>
+                                        <th>ADDRESS</th>
+                                        <th>STATUS</th>
+                                        <th>DELIVERY</th>
+                                        <th>TIME & DATE</th>
+                                        <th>ACTION</th>
+                                    </thead>
+                                    <tbody id="displayReservesPaid">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- End Body -->
-
             <!-- Modal Start -->
             <section>
                 <div class="container">
                     <div class="modal mt-4" id="recent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
-                            <div class="modal-content mt-1">
+                            <div class="modal-content overflow">
                                 <div class="modal-body">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="form-area bg-white rounded-4">
-                                        <h1 class="text-center text-info">Review Recent Order</h1>
+                                        <h1 class="text-center text-info">Review Transaction</h1>
                                         <div id="displayOrderDataByIdHistory">
                                             
                                             

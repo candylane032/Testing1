@@ -2,26 +2,26 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Gill Sans', sans-serif;
 }
 body {
 	background-color: white;
 }
 
 .navbar {
-    background-color: #02bd9e;
+    background-color: #69c7c9;
     padding: 12px;
 }
-.navbar-nav a {
-	font-size: 20px;
+.navbar-nav .nav-link {
+	font-size: 17px;
 	text-transform: uppercase;
-	color: black;
+	color: white;
 	font-weight: 540;
 }
 
 .navbar-nav .nav-link:focus,
 .navbar-nav .nav-link:hover {
-    color: gray;
+    color: #D2F7D6;
 }
 
 .navbar-toggler {
@@ -35,7 +35,13 @@ body {
     width: 45px;
     margin-left: 5px;
 }
-
+#btn-logout {
+	color: red;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+	text-transform: uppercase;
+  }
 
 
 

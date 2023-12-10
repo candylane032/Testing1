@@ -23,15 +23,10 @@
     <link rel="stylesheet" href="../../css/style/responsive.css">
     <link rel="stylesheet" href="../../css/style/customer/product.css">
     <link rel="stylesheet" href="../../toaster/toastr.min.css">
-    <link rel="icon" type="image/x-icon" href="../../images/CSE.png">
+    <link rel="icon" type="image/x-icon" href="../../images/logo.png">
     
     <title>Products | Page</title>
-    <!-- <style>
-        .btn-info {
-            display: flex;
-            margin: auto;
-        }
-    </style> -->
+    
 </head>
 
 <body>
@@ -39,7 +34,7 @@
     <div class="main-container d-flex">
         <nav class="navbar navbar-expand-lg fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#"><img src="../../images/CSE.png" class="logo" alt="Logo"></a>
+                <a class="navbar-brand" href="#"><img src="../../images/logo.png" class="logo" alt="Logo"></a>
                 <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
                     type="button">
@@ -51,7 +46,7 @@
                             <a class="nav-link" href="product.php">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../pages/chatCustomer1/chat.php">Contact Us</a>
+                            <a class="nav-link" href="../../pages/chatCustomer1/index.php">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about1.php">About Us</a>
@@ -105,7 +100,7 @@
 
                                 <li class="nav__item">
                                     <a href="product.php" class="nav__link text-decoration-none">
-                                        <i class="bi bi-shop nav__icon"></i>
+                                        <i class="bi bi-shop  nav__icon"></i>
                                         <span class="nav__name">Home</span>
                                     </a>
                                 </li>
@@ -168,29 +163,43 @@
             
             <!-- Modal Start -->
             <section>
+                <div class="modal fade" id="m1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body p-1">
+                                <h4 class="text-center fw-bold p-2">Description</h4>
+                                <div id="viewDescription">
+                                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
                 <div class="container">
-                    <div class="modal mt-4" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-
+                    <div class="modal" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content overflow">
                                 <div class="modal-body p-4">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class="text-danger">
-                                        <h2 class="text-center text-dark fw-bold mb-3">Buy Product</h2>
+                                        <h2 class="text-center text-dark mb-3">Buy Product</h2>
                                         <div id="selectPnamePrice">
                                             
                                         </div>
                                         <div class="mb-2">
-                                            <label class="text-dark ">Kilo</label>
-                                            <input type="number" id="order_kilo" class="form-control" placeholder="Kilo">
+                                            <label class="text-dark ">Kilo:</label>
+                                            <input type="number" id="order_kilo" class="form-control text-muted" placeholder="How many kilo?">
                                         </div> 
                                         <div class="mb-2">
                                             <label class="text-dark">Total Amount: <span class="text-dark fw-bold" id="t_amount"></span></label>
                                         </div> 
                                         <div class="mb-2">
-                                            <label class="text-dark">Payment Method (if Gcash or Paymaya kindly send the receipt)</label>
-                                            <select class="form-control mb-3 p_method" id="p_method">
+                                            <label class="text-dark">Select Payment Method: <br>(If Gcash or Paymaya kindly send the receipt)</label>
+                                            <select class="form-control text-muted mb-3 p_method" id="p_method">
                                                 <option value="cod">Cash On Delivery (COD)</option>
                                                 <option value="gcash">Gcash</option>
                                                 <option value="paymaya">Paymaya</option>
@@ -213,8 +222,8 @@
                                             <label class="Receipt text-dark">Receipt of (Gcash or Paymaya)</label>
                                             <input type="file" name="" id="p_method_receipt" class="form-control p_method_receipt" placeholder="Image">
                                         </div>
-                                        <div>
-                                            <button id="btn_palceOrder" class="btn btn-info btn-sm mt-3">Place Order</button>
+                                        <div class="">
+                                            <button id="btn_palceOrder" class="btn btn-info btn-sm mt-2">Place Order</button>
                                         </div>
                                     </div>
                                 </div>
@@ -226,27 +235,27 @@
 
             <section>
                 <div class="container">
-                    <div class="modal mt-4" id="reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
+                    <div class="modal" id="reserve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content overflow">
                                 <div class="modal-body p-3">
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                     <div class=" text-danger">
-                                        <h2 class="text-center text-dark fw-bold mb-3">Reserve Product</h2>
+                                        <h2 class="text-center text-dark mb-3">Reserve Product</h2>
                                         <div id="selectPnamePriceReserve">
                                             
                                         </div>
                                         <div class="mb-2">
-                                            <label class="text-dark ">Kilo</label>
-                                            <input type="number" id="reserve_kilo" class="form-control" placeholder="Kilo">
+                                            <label class="text-dark ">Kilo:</label>
+                                            <input type="number" id="reserve_kilo" class="form-control text-muted" placeholder="How many kilo?">
                                         </div> 
                                         <div class="mb-2">
                                             <label class="text-dark">Total Amount: <span class="text-dark fw-bold" id="r_amount"></span></label>
                                         </div> 
                                         <div class="mb-2">
-                                            <label class="text-dark">Payment Method (if Gcash or Paymaya kindly send the receipt)</label>
-                                            <select class="form-control mb-3" id="r_p_method">
+                                            <label class="text-dark">Select Payment Method: <br> (If Gcash or Paymaya kindly send the receipt)</label>
+                                            <select class="form-control mb-3 trxt-muted" id="r_p_method">
                                                 <option value="cod">Cash On Delivery (COD)</option>
                                                 <option value="gcash">Gcash</option>
                                                 <option value="paymaya">Paymaya</option>
@@ -292,10 +301,12 @@
     <script src="../../plugins/bundle/script.js"></script>
     <script src="../../plugins/bundle/scriptCustomer.js"></script>
     <script src="../../plugins/bundle/collapse.js" ></script>
+    
     <!-- DOWNLOADED JS -->
     <script src="../../toaster/toastr.min.js"></script>
     <script src="../../sweetalert/alert.js"></script>
     <script src="../../bootstrap/boots.js"></script>
+    
     <script>
         $(document).ready(function(){
             if(!localStorage.getItem('SessionLocalStorage')){
