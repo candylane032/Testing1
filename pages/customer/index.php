@@ -147,7 +147,20 @@
                 </div>
             </section>
             <!-- End Body -->
-            
+        <section>
+            <div class="modal fade" id="productModal">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body p-3">
+                            <h4 class="text-center fw-bold p-2">Description</h4>
+                            <div id="viewDesc">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</section>
             <!-- Modal Start -->
             <section>
                 <div class="container">

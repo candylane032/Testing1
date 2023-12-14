@@ -136,7 +136,7 @@ var desc =(viewProdId,viewUserId)=>{
         $('#viewDescription').empty();
         
         json.forEach(el => {
-            str += '<div class="text-center">'+ el.p_desc +'</div>';
+            str += '<div>'+ el.p_desc +'</div>';
         });
         $('#viewDescription').append(str);
         },
@@ -641,6 +641,9 @@ function displaySearch(container, e) {
     str += '<h3 class="card-title">' + e.pname + '</h3>';
     str += '<div class="img-area mb-4 text-center">';
     str += '<img class="fish object-fit-cover" alt="" src="../../uploads/productImage/' + e.img + '">';
+    str += '<div class="overlay">';
+    str += '<button product_id="' + e.product_id + '" user_id="' + e.user_id + '" class="btn btn-secondary btn-sm">View Details</button>';
+    str += '</div>';
     str += '</div>';
     str += '<p class="price text-decoration-none"><i class="fa-sharp fa-solid fa-peso-sign"></i>' + e.p_price + '/kg' + '</p>';
     str += '<p class="' + textColor + '">' + e.stock + '</p>';
@@ -654,6 +657,16 @@ function displaySearch(container, e) {
     str += '</div>';
 
     container.append(str);
+    
+    $(document).on('click', '.btn', function () {
+        viewProdId = $(this).attr("product_id");
+        viewUserId = $(this).attr("user_id");
+        desc(viewProdId,viewUserId)
+
+    $('#m1').modal('show');
+
+    });
+    
 }
 
 

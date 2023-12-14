@@ -68,7 +68,7 @@
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-chat-dots-fill"></i><a class="a text-decoration-none px-2 " 
-                        href="../../pages/chat/admin/ChatA.php">Message</a>
+                        href="../../pages/chatAdmin/index.php">Message</a>
                     </li>
                     <li class="text-white mb-2">
                         <i class="bi bi-person-fill"></i><a class="a text-decoration-none px-2 " 

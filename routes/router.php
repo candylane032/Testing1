@@ -131,6 +131,11 @@ if (isset($_POST['choice'])) {
             $viewUserId = $_POST['viewUserId'];
             echo $backend->desc($viewProdId,$viewUserId);
             break;
+        case 'landingdesc':
+            $backend = new product();
+            $viewProdId = $_POST['viewProdId'];
+            echo $backend->landingdesc($viewProdId);
+            break;
         case 'OrderProductByCod':
             $backend = new product();
             $product_id = $_POST['product_id'];
@@ -397,6 +402,10 @@ if (isset($_POST['choice'])) {
         case 'searchUserss':
             $backend = new chatA();
             echo $backend->searchUserss();
+            break;
+        case 'searchUserssReserve':
+            $backend = new chatA();
+            echo $backend->searchUserssReserve();
             break;
         case 'chatToAdmin':
             $backend = new chatA();

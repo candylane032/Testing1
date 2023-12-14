@@ -119,7 +119,7 @@
                             <h4 class=" mb-3 text-center fw-bold mt-4">Recent Purchased</h4>
                             <div class="col-md-4 col-sm-12 mb-2">
                                 <div class="search-container">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Search transaction..." onkeyup="searchProducts()">
+                                    <input type="text" id="searchInputPurchase" class="form-control" placeholder="Search user" onkeyup="searchUsersPurchase()">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3">
@@ -127,7 +127,7 @@
                             <div class="col-12 col-lg-12" id="table-container">
                                 <table class="table table-light">
                                     <thead>
-                                        <th>Count</th>
+                                      
                                         <th>UNAME</th>
                                         <th>FNAME</th>
                                         <th>LNAME</th>
@@ -137,7 +137,7 @@
                                         <th>TIME & DATE</th>
                                         <th>ACTION</th>
                                     </thead>
-                                    <tbody id="displayOrdersPaid">
+                                    <tbody id="displayUsersPurchase">
                                         
                                     </tbody>
                                 </table>
@@ -155,7 +155,7 @@
                             <h4 class=" mb-3 text-center fw-bold mt-4">Recent Reservation</h4>
                             <div class="col-md-4 col-sm-12 mb-2">
                                 <div class="search-container">
-                                    <input type="text" id="searchInput" class="form-control" placeholder="Search transaction..." onkeyup="searchProducts()">
+                                    <input type="text" id="searchInputReserve" class="form-control" placeholder="Search user" onkeyup="searchUsersReserve()">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3">
@@ -163,7 +163,7 @@
                             <div class="col-12 col-lg-12" id="table-container">
                                 <table class="table table-light">
                                     <thead>
-                                        <th>Count</th>
+                                      
                                         <th>UNAME</th>
                                         <th>FNAME</th>
                                         <th>LNAME</th>
@@ -173,7 +173,7 @@
                                         <th>TIME & DATE</th>
                                         <th>ACTION</th>
                                     </thead>
-                                    <tbody id="displayReservesPaid">
+                                    <tbody id="displayUsersReserve">
                                         
                                     </tbody>
                                 </table>
@@ -182,6 +182,7 @@
                     </div>
                 </div>
             </section>
+            
             <!-- End Body -->
             <!-- Modal Start -->
             <section>

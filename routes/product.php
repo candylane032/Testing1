@@ -77,6 +77,10 @@ class product extends backend
     {
         return self::getDesc($viewProdId,$viewUserId);
     }
+    public function landingdesc($viewProdId)
+    {
+        return self::getLdesc($viewProdId);
+    }
 
 
 
@@ -178,7 +182,26 @@ class product extends backend
                 $database->closeConnection();
                 return json_encode($result);
             }else{
-                return 'dfgdfgdff fghfghfghfghfg';
+                return '403';
+            }
+        
+        } catch (PDOException $th) {
+            throw $th;
+            // return "501";
+        }
+    }
+
+    private function getLdesc($viewProdId){
+        try {
+            $database = new database();
+            if ($database->getStatus()){
+                $stmt = $database->getCon()->prepare($this->getLdescQuery());
+                $stmt->execute(array($viewProdId));
+                $result = $stmt->fetchAll();
+                $database->closeConnection();
+                return json_encode($result);
+            }else{
+                return '403';
             }
         
         } catch (PDOException $th) {
@@ -667,6 +690,9 @@ class product extends backend
     }
     private function getDescQuery(){
         return "SELECT products.p_desc FROM products INNER JOIN profile WHERE products.product_id = ? AND profile.user_id = ?";
+    }
+    private function getLdescQuery(){
+        return "SELECT * FROM products WHERE products.product_id = ?";
     }
 
 

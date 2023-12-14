@@ -16,12 +16,12 @@ $('#btn-logout').click(function () {
 var logout = () => {
     $.ajax({
         type: "POST",
-        url: "../../../routes/router.php",
+        url: "../../routes/router.php",
         data: { choice: 'logout' },
         success: function (data) {
             if (data == "200") {
                 localStorage.removeItem("SessionLocalStorage");
-                window.location.href = "../../../";
+                window.location.href = "../../";
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {

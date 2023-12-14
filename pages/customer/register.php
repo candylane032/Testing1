@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../../fontawesome/all.min.css">
 	<link rel="stylesheet" href="../../fontawesome/fontawesome.min.css">
 	<link rel="stylesheet" href="../../bootstrap-icons-1.11.1/bootstrap-icons.css">
+	
 	<!-- CUSTOM CSS -->
 	<link rel="stylesheet" href="../../css/style/global.css">
 	<link rel="stylesheet" href="../../css/style/landing.css">
@@ -34,13 +35,13 @@
 						<a class="nav-link" href="../.././">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">Products</a>
+						<a class="nav-link" href="../.././">Products</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">About Us</a>
+						<a class="nav-link" href="../.././">About Us</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">Services</a>
+						<a class="nav-link" href="../.././">Services</a>
 					</li>
 
 				</ul>

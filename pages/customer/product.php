@@ -166,8 +166,8 @@
                 <div class="modal fade" id="m1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <div class="modal-body p-1">
-                                <h4 class="text-center fw-bold p-2">Description</h4>
+                            <div class="modal-body p-3">
+                                <h4 class="text-center p-2 mb-1">Description</h4>
                                 <div id="viewDescription">
                                             
                                 </div>

@@ -86,6 +86,7 @@ body {
 	border-radius: 5px;
 }
 
+
 .img-area .overlay {
 	position: absolute;
 	top: 0;
@@ -106,6 +107,7 @@ body {
 
 .img-area:hover .overlay {
 	opacity: 1;
+
 }
 
 .img-area .overlay .btn {
@@ -153,8 +155,9 @@ body {
 }
 
 .overflow {
-	margin-top: 120px;
-	height: 400px;
+	margin-top: 100px;
+	margin-bottom: 80px;
+	height: 500px;
 	overflow-y: scroll;
 }
 .nano {
@@ -210,4 +213,10 @@ body {
     height: 75vh;
 	overflow-y: scroll;
 }
+.toast {
+    opacity: 1 !important;
+	border: none !important;
+}
+
+  
 /* Button End */

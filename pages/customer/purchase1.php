@@ -143,7 +143,7 @@
                 <div class="container">
                     <div class="purchase">
                         <div class="inner-wrap row p-3">
-                            <h1 class=" mb-4 text-center fw-bold mt-5">My Purchase</h1>
+                            <h1 class=" mb-4 text-center fw-bold mt-5">My Purchases</h1>
                             <div class="AddButton text-end mb-2">
                                  <button class="btn btn-secondary btn-sm"><a class="text-decoration-none text-white" href="../chatCustomer1/index.php">Message Owner</a></button>
                             </div>

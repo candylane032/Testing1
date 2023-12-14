@@ -22,12 +22,10 @@ var doRequestDisplayOrdersPaid = () => {
 
             var json = JSON.parse(data);
             var str = "";
-            let count = 1;
 
             json.forEach(element => {
 
                 str += '<tr>';
-                str += '<td data-label="Count">' + count + '</td>';
                 str += '<td class="text-capitalize" data-label="UNAME">' + element.username + '</td>';
                 str += '<td class="text-capitalize" data-label="FNAME">' + element.fname + '</td>';
                 str += '<td class="text-capitalize" data-label="LNAME">' + element.lname + '</td>';
@@ -41,11 +39,8 @@ var doRequestDisplayOrdersPaid = () => {
 
                 str += '</tr>';
 
-                count++;
             });
-            $('#displayOrdersPaid').append(str);
-
-
+            $('#displayUsersPurchase').append(str);
 
             $('.btn-recent-update-orderHistory').click(function () {
                 let orderId = $(this).attr("order_id");
@@ -228,12 +223,10 @@ var doRequestDisplayReservedPaid = () => {
             // console.log(data);
             var json = JSON.parse(data);
             var str = "";
-            let count = 1;
 
             json.forEach(element => {
 
                 str += '<tr>';
-                str += '<td data-label="Count">' + count + '</td>';
                 str += '<td class="text-capitalize" data-label="UNAME">' + element.username + '</td>';
                 str += '<td class="text-capitalize" data-label="FNAME">' + element.fname + '</td>';
                 str += '<td class="text-capitalize" data-label="LNAME">' + element.lname + '</td>';
@@ -247,9 +240,8 @@ var doRequestDisplayReservedPaid = () => {
                 
                 str += '</tr>';
 
-                count++;
             });
-            $('#displayReservesPaid').append(str);
+            $('#displayUsersReserve').append(str);
 
 
 
@@ -419,3 +411,132 @@ var doRequestUpdateReservePstatusDelivery = (newRP_status, new_delivery, reserve
     });
 }
 
+//Purchase
+var searchUsersPurchase = () => {
+    var searchQuery = $('#searchInputPurchase').val();
+    var container = $('#displayUsersPurchase');
+
+    $.ajax({
+        type: "POST",
+        url: "../../routes/router.php",
+        data: { choice: 'searchUserss' },
+        success: function (data) {
+            var json = JSON.parse(data);
+
+            container.empty();
+            if (searchQuery === '') {
+                json.forEach(function (e) {
+                    displayUsersPurchase(container, e);
+                });
+            } else {
+                var filteredData = json.filter(function (e) {
+                    return (
+                        e.username.toLowerCase().includes(searchQuery.toLowerCase())
+                    );
+                });
+
+                if (filteredData.length === 0) {
+                    container.append("<p>No matching products found.</p>");
+                } else {
+                    filteredData.forEach(function (e) {
+                        displayUsersPurchase(container, e);
+                    });
+                }
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("An error occurred: " + thrownError);
+        }
+    });
+}
+
+
+var displayUsersPurchase = (container, e) => {
+    var str = '';
+
+    str += '<tr>';
+
+    str += '<td class="text-capitalize" data-label="UNAME">' + e.username + '</td>';
+    str += '<td class="text-capitalize" data-label="FNAME">' + e.fname + '</td>';
+    str += '<td class="text-capitalize" data-label="LNAME">' + e.lname + '</td>';
+    str += '<td class="text-capitalize" data-label="ADDRESS">' + e.address + '</td>';
+    str += '<td class="text-success" data-label="STATUS">' + e.o_payment_status + '</td>';
+    str += '<td class="text-success text-capitalize" data-label="DELIVERY">' + e.o_delivery + '</td>';
+    str += '<td data-label="DATE">' + e.created + '</td>';
+    str += '<td data-label="ACTION">';
+    str += '<button order_id="' + e.order_id + '" data-bs-toggle="modal" data-bs-target="#recent" class="btn-update mx-1 btn-recent-update-orderHistory"><i class="bi bi-pencil-square"></i></button>';
+    str += '</td>';
+    str += '</tr>';
+
+    container.append(str);
+    
+    $('.btn-recent-update-orderHistory').click(function () {
+        let orderId = $(this).attr("order_id");
+
+        doRequestDisplayOrderByIdHistory(orderId);
+    });
+}
+
+//Reserve
+var searchUsersReserve = () => {
+    var searchQuery = $('#searchInputReserve').val();
+    var container = $('#displayUsersReserve');
+
+    $.ajax({
+        type: "POST",
+        url: "../../routes/router.php",
+        data: { choice: 'searchUserssReserve' },
+        success: function (data) {
+            var json = JSON.parse(data);
+
+            container.empty();
+            if (searchQuery === '') {
+                json.forEach(function (e) {
+                    displayUsersReserve(container, e);
+                });
+            } else {
+                var filteredData = json.filter(function (e) {
+                    return (
+                        e.username.toLowerCase().includes(searchQuery.toLowerCase())
+                    );
+                });
+
+                if (filteredData.length === 0) {
+                    container.append("<p>No matching products found.</p>");
+                } else {
+                    filteredData.forEach(function (e) {
+                        displayUsersReserve(container, e);
+                    });
+                }
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("An error occurred: " + thrownError);
+        }
+    });
+}
+
+
+var displayUsersReserve = (container, e) => {
+    var str = '';
+    str += '<tr>';
+
+    str += '<td class="text-capitalize" data-label="UNAME">' + e.username + '</td>';
+    str += '<td class="text-capitalize" data-label="FNAME">' + e.fname + '</td>';
+    str += '<td class="text-capitalize" data-label="LNAME">' + e.lname + '</td>';
+    str += '<td class="text-capitalize" data-label="ADDRESS">' + e.address + '</td>';
+    str += '<td class="text-success text-capitalize" data-label="STATUS">' + e.payment_status + '</td>';
+    str += '<td class="text-success text-capitalize" data-label="DELIVERY">' + e.r_delivery + '</td>';
+    str += '<td data-label="DATE">' + e.created + '</td>';
+    str += '<td data-label="ACTION">';
+    str += '<button reserve_id="' + e.reserve_id + '" data-bs-toggle="modal" data-bs-target="#recent" class="btn-update mx-1 btn-recent-update-reserveHistory"><i class="bi bi-pencil-square"></i></button>';
+    str += '</td>';
+    str += '</tr>';
+
+    container.append(str);
+    $('.btn-recent-update-reserveHistory').click(function () {
+        let reserveId = $(this).attr("reserve_id");
+
+        doRequestDisplayReserveByIdHistory(reserveId);
+    });
+}

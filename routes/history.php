@@ -158,7 +158,6 @@ class history extends backend
     private function displayReserveByIdHistoryQuery(){
         return "SELECT reserves.reserve_id, profile.fname, profile.lname, profile.address, profile.pnumber, products.pname, products.img, products.p_price, reserves.reserve_kilo, reserves.r_total_amount, reserves.r_p_method_receipt, reserves.r_p_method, reserves.r_ref_num, reserves.payment_status, reserves.r_delivery FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN products ON products.product_id = reserves.product_id WHERE reserves.reserve_id = ?";
     }
-    
 }
 
 ?>
