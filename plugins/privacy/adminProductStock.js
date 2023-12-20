@@ -11,7 +11,7 @@ var doRequestDisplayProductStockNotAvailable = () => {
         data: { choice: 'DisplayProductNotAvailable', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json = JSON.parse(data);
             var str = "";
             let product = 1;
@@ -64,7 +64,7 @@ var doRequestDisplayProductStockModal = (SetIdProductStock) => {
         data: { choice: 'DisplayProductStockModal', product_id: SetIdProductStock },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json2 = JSON.parse(data);
             var str2 = "";
             let product2 = 1;
@@ -135,7 +135,7 @@ var doRequestUpdateProductStock = (newStock, productId) => {
             product_id: productId
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 alert("Product Stock Updated Successfully!");
                 window.location.href = "../../pages/admin/adminProductStock.php";

@@ -31,7 +31,7 @@ var signIn = () => {
             password: $('#password').val()
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data === "InvalidEmail") {
                 toastr.error("Invalid email format. Please provide a valid email address.");
             } else if (data === "IncorrectEmail") {

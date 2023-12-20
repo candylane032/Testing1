@@ -118,16 +118,16 @@
                             <h1 class=" mb-4 text-center fw-bold mt-4">Purchased List</h1>
                             <div class="col-12 col-lg-3">
                             </div>
+                            <div class="search-container mb-3">
+                                    <input type="text" id="orderSearchInput" class="form-control" placeholder="Search user" onkeyup="orderSearch()">
+                            </div>
                             <div class="col-12 col-lg-12">
                                 <table class="table table-light">
                                     <thead>
-                                        <th>COUNT</th>
                                         <th>UNAME</th>
                                         <th>FNAME</th>
                                         <th>LNAME</th>
                                         <th>ADDRESS</th>
-                                        <th>STATUS</th>
-                                        <th>DELIVERY</th>
                                         <th>TIME & DATE</th>
                                         <th>ACTION</th>
                                     </thead>

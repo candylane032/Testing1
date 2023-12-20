@@ -281,8 +281,8 @@ if (isset($_POST['choice'])) {
             break;
         case 'DisplayReservesById':
             $backend = new basket();
-            $reserve_id = $_POST['reserve_id'];
-            echo $backend->doDisplayReservesById($reserve_id);
+            $username = $_POST['username'];
+            echo $backend->doDisplayReservesById($username);
             break;
         case 'UpdateReservePstatusDelivery':
             $backend = new basket();
@@ -352,8 +352,8 @@ if (isset($_POST['choice'])) {
             break;
         case 'DisplayOrderById':
             $backend = new order();
-            $order_id = $_POST['order_id'];
-            echo $backend->doDisplayOrderById($order_id);
+            $username = $_POST['username'];
+            echo $backend->doDisplayOrderById($username);
             break;
         case 'UpdateOrderPstatusDelivery':
             $backend = new order();
@@ -432,6 +432,30 @@ if (isset($_POST['choice'])) {
             $backend = new chart();
             echo $backend->chartMonthly();
             break;
+        // case 'chartMonthlySelect':
+        //     $backend = new chart();
+        //     $selectedMonth = $_POST['month'];
+        
+        //     switch ($selectedMonth) {
+        //         case 'January':
+        //         case 'February':
+        //         case 'March':
+        //         case 'April':
+        //         case 'May':
+        //         case 'June':
+        //         case 'July':
+        //         case 'August':
+        //         case 'September':
+        //         case 'October':
+        //         case 'November':
+        //         case 'December':
+        //             echo $backend->chartMonthlySelect($selectedMonth);
+        //             break;
+        
+        //         default:
+        //             echo $backend->chartMonthly();
+        //     }
+        //     break;            
 
         case 'logout':
             $backend = new backend();

@@ -11,7 +11,7 @@ var doRequestDisplayProduct = () => {
         data: { choice: 'DisplayProductAdmin', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json = JSON.parse(data);
             var str = "";
             let product = 1;
@@ -101,7 +101,7 @@ var searchProducts = () => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayProductAdmin' },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             try {
                 var json = JSON.parse(data);
                 json.sort(function (a, b) {

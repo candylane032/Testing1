@@ -9,38 +9,43 @@ var doRequestDisplayOrdersUnpaid = () => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayOrdersUnpaid', },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json = JSON.parse(data);
             var str = "";
-            let order = 1;
+            // let order = 1;
+
+            var uniqueUsernames = {};
+            var uniqueFnames = {};
 
             json.forEach(element => {
+                if (!uniqueUsernames.hasOwnProperty(element.username)) {
+                    str += '<tr>';
+                    // str += '<td data-label="Count">' + order + '</td>';
+                    str += '<td class="text-capitalize" data-label="UNAME">' + element.username + '</td>';
+                    str += '<td class="text-capitalize" data-label="FNAME">' + element.fname + '</td>';
+                    str += '<td class="text-capitalize" data-label="LNAME">' + element.lname + '</td>';
+                    str += '<td class="text-capitalize" data-label="ADDRESS">' + element.address + '</td>';
+                    str += '<td data-label="DATE">' + element.created + '</td>';
+                    str += '<td data-label="ACTION">';
+                    str += '<button username="' + element.username + '" data-bs-toggle="modal" data-bs-target="#orderbyid" class="btn-update mx-1 btn-update-order"><i class="bi bi-pencil-square"></i></button>';
+                    str += '<button class="btn-status mx-1"><a class="text-decoration-none text-white" href="../chatAdmin/index.php"><i class="bi bi-chat-dots"></i></a></button>';
+                    str += '</td>';
+                    str += '</tr>';
 
-                str += '<tr>';
-                str += '<td data-label="Count">' + order + '</td>';
-                str += '<td class="text-capitalize" data-label="UNAME">' + element.username + '</td>';
-                str += '<td class="text-capitalize" data-label="FNAME">' + element.fname + '</td>';
-                str += '<td class="text-capitalize" data-label="LNAME">' + element.lname + '</td>';
-                str += '<td class="text-capitalize" data-label="ADDRESS">' + element.address + '</td>';
-                str += '<td class="text-warning text-capitalize" data-label="STATUS">' + element.o_payment_status + '</td>';
-                str += '<td class="text-success text-capitalize" data-label="DELIVERY">' + element.o_delivery + '</td>';
-                str += '<td data-label="DATE">' + element.created + '</td>';
-                str += '<td data-label="ACTION">';
-                str += '<button order_id="' + element.order_id + '" data-bs-toggle="modal" data-bs-target="#orderbyid" class="btn-update mx-1 btn-update-order"><i class="bi bi-pencil-square"></i></button>';
-                str += '<button class="btn-status mx-1"><a class="text-decoration-none text-white" href="../chatAdmin/index.php"><i class="bi bi-chat-dots"></i></a></button>';
-                str += '</td>';
-
-                str += '</tr>';
-                order++;
+                    uniqueUsernames[element.username] = true;
+                    uniqueFnames[element.fname] = true;
+                    // order++;
+                }
+                
             });
             $('#displayOrdersUnPaid').append(str);
 
 
 
             $('.btn-update-order').click(function () {
-                let orderId = $(this).attr("order_id");
+                let userUsername = $(this).attr("username");
 
-                doRequestDisplayOrderById(orderId);
+                doRequestDisplayOrderById(userUsername);
             });
 
 
@@ -53,42 +58,50 @@ var doRequestDisplayOrdersUnpaid = () => {
 }
 
 
-var doRequestDisplayOrderById = (orderId) => {
+var doRequestDisplayOrderById = (userUsername) => {
     $.ajax({
 
         type: "POST",
         url: "../../routes/router.php",
-        data: { choice: 'DisplayOrderById', order_id: orderId },
+        data: { choice: 'DisplayOrderById', username: userUsername },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let orderbyId = 1;
+
+            var fnames = {};
+            var lnames = {};
 
             json1.forEach(element1 => {
 
                 str1 += '<div class="rowOrder row mt-2 p-3 mb-3">';
                 str1 += '<div class="col-12 col-lg-6">';
                 str1 += '<div>';
-                str1 += '<label class="fw-bold">FULL NAME</label>';
-                str1 += '<p><span class="text-capitalize">' + element1.fname + '</span><span class="text-capitalize"> ' + element1.lname + '</span></p>';
-                str1 += '</div>';
-                str1 += '<div>';
-                str1 += '<label class="fw-bold">ADDRESS</label>';
-                str1 += '<p class="text-capitalize">' + element1.address + '</p>';
-                str1 += '</div>';
-                str1 += '<div>';
-                str1 += '<label class="fw-bold">PHONE NUMBER</label>';
-                str1 += '<p>' + element1.pnumber + '</p>';
-                str1 += '</div>';
+                if (!fnames.hasOwnProperty(element1.fname) && !lnames.hasOwnProperty(element1.lname)) {
+                    str1 += '<label class="fw-bold">FULL NAME</label>';
+                    str1 += '<p><span class="text-capitalize">' + element1.fname + '</span><span class="text-capitalize"> ' + element1.lname + '</span></p>';
+                    str1 += '</div>';
+                    str1 += '<div>';
+                    str1 += '<label class="fw-bold">ADDRESS</label>';
+                    str1 += '<p class="text-capitalize">' + element1.address + '</p>';
+                    str1 += '</div>';
+                    str1 += '<div>';
+                    str1 += '<label class="fw-bold">PHONE NUMBER</label>';
+                    str1 += '<p>' + element1.pnumber + '</p>';
+                    str1 += '</div>';
+
+                    fnames[element1.fname] = true;
+                    lnames[element1.lname] = true;
+                }
                 str1 += '<div>';
                 str1 += '<label class="fw-bold">PRODUCT NAME</label>';
                 str1 += '<p>' + element1.pname + '</p>';
                 str1 += '</div>';
-                str1 += '<div>';
-                str1 += '<label class="fw-bold">PRODUCT IMAGE</label>';
-                str1 += '<p><img class="orderImg rounded object-fit-cover" src="../../uploads/productImage/' + element1.img + '"></p>';
-                str1 += '</div>';
+                // str1 += '<div>';
+                // str1 += '<label class="fw-bold">PRODUCT IMAGE</label>';
+                // str1 += '<p><img class="orderImg rounded object-fit-cover" src="../../uploads/productImage/' + element1.img + '"></p>';
+                // str1 += '</div>';
                 str1 += '<div>';
                 str1 += '<label class="fw-bold">PRODUCT PRICE</label>';
                 str1 += '<p>' + element1.p_price + '</p>';
@@ -130,6 +143,29 @@ var doRequestDisplayOrderById = (orderId) => {
                 str1 += '<label class="fw-bold">REFERENCE NUMBER</label>';
                 str1 += '<p>' + element1.ref_num + '</p>';
                 str1 += '</div>';
+
+                var textColorStatus = element1.o_payment_status === "pending" ? 'text-warning' : 'text-success';
+
+                str1 += '<label >Payment Status: <span class="' + textColorStatus + ' fw-bold">' + element1.o_payment_status + '</span></label><br><br>';
+                var textColorDelivery;
+
+                switch (element1.o_delivery) {
+                    case "waiting":
+                        textColorDelivery = 'text-info';
+                        break;
+                    case "preparing":
+                        textColorDelivery = 'text-warning';
+                        break;
+                    case "On the Way":
+                        textColorDelivery = 'text-primary';
+                        break;
+                    default:
+                        textColorDelivery = 'text-success';
+                }
+
+                str1 += '<label>Delivery Status: <span class="' + textColorDelivery + ' fw-bold">' + element1.o_delivery + '</span></label><br><br>';
+                str1 += '<label>Date & Time: <span class=" fw-bold">' + element1.created + '</span></label><br><br>';
+
                 str1 += '<div class="mb-3">';
                 str1 += '<label class="fw-bold">PAYMENT STATUS</label>';
                 str1 += '<select class="form-control" id="p_status_' + element1.order_id + '" value="' + element1.o_payment_status + '">';
@@ -189,7 +225,7 @@ var doRequestUpdateOrderPstatusDelivery = (newP_status, newDelivery, orderIdUpda
             order_id: orderIdUpdate,
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',
@@ -203,4 +239,81 @@ var doRequestUpdateOrderPstatusDelivery = (newP_status, newDelivery, orderIdUpda
 
         }
     });
+}
+
+var orderSearch = () => {
+    var searchQuery = $('#orderSearchInput').val().toLowerCase(); // Convert the search query to lowercase
+    var container = $('#displayOrdersUnPaid');
+
+    $.ajax({
+        type: "POST",
+        url: "../../routes/router.php",
+        data: { choice: 'DisplayOrdersUnpaid' },
+        success: function (data) {
+            try {
+                var json = JSON.parse(data);
+                json.sort(function (a, b) {
+                    var dateA = new Date(a.created);
+                    var dateB = new Date(b.created);
+                    return dateB - dateA;
+                });
+                json.reverse();
+                container.empty();
+
+                if (searchQuery === '') {
+                    json.forEach(function (e) {
+                        displaySearch(container, e);
+                    });
+                } else {
+                    var filteredData = json.filter(function (e) {
+                        // Use includes() directly on lowercase strings for case-insensitive comparison
+                        return e.username.toLowerCase().includes(searchQuery);
+                    });
+
+                    if (filteredData.length === 0) {
+                        container.append("<p>No matching products found.</p>");
+                    } else {
+                        filteredData.forEach(function (e) {
+                            displaySearch(container, e);
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error("Error parsing JSON data: " + error);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("An error occurred: " + thrownError);
+        }
+    });
+}
+
+function displaySearch(container, e) {
+
+   
+    str = '';
+
+    
+        str += '<tr>';
+        str += '<td class="text-capitalize" data-label="UNAME">' + e.username + '</td>';
+        str += '<td class="text-capitalize" data-label="FNAME">' + e.fname + '</td>';
+        str += '<td class="text-capitalize" data-label="LNAME">' + e.lname + '</td>';
+        str += '<td class="text-capitalize" data-label="ADDRESS">' + e.address + '</td>';
+        str += '<td data-label="DATE">' + e.created + '</td>';
+        str += '<td data-label="ACTION">';
+        str += '<button username="' + e.username + '" data-bs-toggle="modal" data-bs-target="#orderbyid" class="btn-update mx-1 btn-update-order"><i class="bi bi-pencil-square"></i></button>';
+        str += '<button class="btn-status mx-1"><a class="text-decoration-none text-white" href="../chatAdmin/index.php"><i class="bi bi-chat-dots"></i></a></button>';
+        str += '</td>';
+        str += '</tr>';
+
+    
+
+    container.append(str);
+
+    $('.btn-update-order').click(function () {
+        let userUsername = $(this).attr("username");
+
+        doRequestDisplayOrderById(userUsername);
+    });
+
 }

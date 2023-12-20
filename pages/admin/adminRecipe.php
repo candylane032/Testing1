@@ -117,7 +117,7 @@
                         </div>
                         <div class="col-md-6 col-sm-12 mb-3">
                             <div class="search-container">
-                                <input type="text" id="searchInput" class="form-control" placeholder="Search products..." onkeyup="searchProducts()">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search a name of fish..." onkeyup="searchProducts()">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 mb-4">

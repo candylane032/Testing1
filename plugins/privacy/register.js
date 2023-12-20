@@ -53,7 +53,7 @@ var req = () => {
         url: "../../routes/router.php",
         data: { choice: 'signUp', username: $('#username').val(), email: $('#email').val(), password: $('#password').val() },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "ExistUsername") {
                 toastr.error("Username Already Taken");
             } else if (data == "ExistEmail") {

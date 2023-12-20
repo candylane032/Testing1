@@ -40,7 +40,7 @@ var doRequestDisplayOrder = (profileUserId) => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayOrder', user_id: profileUserId },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let order = 1;
@@ -86,7 +86,7 @@ var doRequestViewOrder = (order_id) => {
         url: "../../routes/router.php",
         data: { choice: 'ViewOrder', order_id: order_id },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json2 = JSON.parse(data);
             var str2 = "";
             let orderView = 1;

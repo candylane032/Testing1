@@ -56,7 +56,7 @@ var doRequestAddProductRecipe = (formData) => {
         processData: false,
         contentType: false,
         success: (data) => {
-            console.log(data);
+            // console.log(data);
             if (data === "ExistProductName") {
                 toastr.error("Product Name Already Added!");
             } else if (data === "ExistProductImage") {
@@ -154,7 +154,7 @@ var searchProducts = () => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayRecipes' },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             try {
                 var json = JSON.parse(data);
                 json.sort(function (a, b) {
@@ -227,7 +227,7 @@ var doRequestDisplayRecipeModal = (SetIdRecipe) => {
         data: { choice: 'DisplayRecipeModal', recipe_id: SetIdRecipe },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let recipe1 = 1;
@@ -286,7 +286,7 @@ var doRequestDisplayRecipeModalUpdate = (SetIdRecipeUpdate) => {
         data: { choice: 'DisplayRecipeModalUpdate', recipe_id: SetIdRecipeUpdate },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json2 = JSON.parse(data);
             var str2 = "";
             let recipe2 = 1;
@@ -388,7 +388,7 @@ var doRequestUpdateRecipe = (newR_name, newR_image, newR_type, newR_list, recipe
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',

@@ -10,7 +10,7 @@ var doRequestDisplayProfilePic = () => {
         data: { choice: 'DisplayProfilePic', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json2 = JSON.parse(data);
             var str2 = "";
             let pic2 = 1;
@@ -49,7 +49,7 @@ var doSetIdProfilePicModal = (SetIdProductPic) => {
         data: { choice: 'DisplayProfilePicModal', user_id: SetIdProductPic },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json3 = JSON.parse(data);
             var str3 = "";
             let pic3 = 1;
@@ -108,7 +108,7 @@ var doRequestUpdateProfilePicModal = (newP_image, userId) => {
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',

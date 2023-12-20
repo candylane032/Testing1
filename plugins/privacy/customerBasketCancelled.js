@@ -9,7 +9,7 @@ var doRequestSelectUserIdProfile = () => {
       url: "../../routes/router.php",
       data: { choice: 'SelectUserIdProfileToCancelled' },
       success: function (data) {
-         console.log(data);
+         // console.log(data);
          var json = JSON.parse(data);
          var str = "";
 
@@ -45,7 +45,7 @@ var doRequestDisplayReserveBasketCancelled = (profileUserId) => {
          user_id: profileUserId,
       },
       success: function (data) {
-         console.log(data);
+         // console.log(data);
          var json2 = JSON.parse(data);
          var str2 = "";
          let basket = 1;

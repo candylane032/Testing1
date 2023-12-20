@@ -13,7 +13,7 @@ var doRequestDisplayProfilePic = () => {
         data: { choice: 'DisplayProfilePic', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json2 = JSON.parse(data);
             var str2 = "";
             let pic2 = 1;
@@ -52,7 +52,7 @@ var doSetIdProfilePicModal = (SetIdProductPic) => {
         data: { choice: 'DisplayProfilePicModal', user_id: SetIdProductPic },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json3 = JSON.parse(data);
             var str3 = "";
             let pic3 = 1;
@@ -110,7 +110,7 @@ var doRequestUpdateProfilePicModal = (newP_image, userId) => {
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',
@@ -178,7 +178,7 @@ var doRequestInsertEditProfile = () => {
             address: $('#address').val(),
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "409") {
                 console.log("Exist Id");
             } else if (data == "200") {
@@ -262,7 +262,7 @@ var doRequestDisplayProfile = () => {
             url: "../../routes/router.php",
             data: { choice: 'SetIdProfile', SetIdProfile: SetIdProfile },
             success: function (data) {
-                console.log(data);
+                // console.log(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError);
@@ -284,7 +284,7 @@ var doRequestDisplayProfileModal = () => {
         data: { choice: 'DisplayProfileModal', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let profile1 = 1;
@@ -383,7 +383,7 @@ var doRequestNewUpdateProfile = (newFname, newLname, newGender, newPnumber, newA
             address: newAddress
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',

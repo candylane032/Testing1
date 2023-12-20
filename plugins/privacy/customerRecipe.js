@@ -11,7 +11,7 @@ var doRequestDisplayRecipes = () => {
         data: { choice: 'DisplayRecipes', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json = JSON.parse(data);
             var str = "";
             let recipe = 1;
@@ -73,7 +73,7 @@ var searchProducts = () => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayRecipes' },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             try {
                 var json = JSON.parse(data);
                 json.sort(function (a, b) {
@@ -122,7 +122,7 @@ function displaySearch(container, e) {
     str += '<div class="card-body">';
     str += '<h3 class="card-title">' + e.r_name + '</h3>';
     str += '<div class="img-area text-center">';
-    str += '<img class="fish" alt="" src="../../uploads/recipeImage/' + e.r_image + '">';
+    str += '<img class="fish object-fit-cover" alt="" src="../../uploads/recipeImage/' + e.r_image + '">';
     str += '<div class="d-flex align-items-center justify-content-center">';
     str += '<button recipe_id="' + e.recipe_id + '" data-bs-toggle="modal" data-bs-target="#recipes" class="btn btn-info btn-sm mt-3 mx-2 btn-view-recipe">View</button>';
     str += '</div>';
@@ -143,7 +143,7 @@ var doRequestDisplayRecipeModal = (SetIdRecipe) => {
         data: { choice: 'DisplayRecipeModal', recipe_id: SetIdRecipe },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let recipe1 = 1;

@@ -103,7 +103,7 @@
 				</header>
 				<div class="search">
 					<span class="text-muted">Click the search Icon and Type Admin to contact</span>
-					<input type="text" placeholder="Enter name to search" class="form-control rounded-3">
+					<input type="text" placeholder="Type Admin to search" class="form-control rounded-3">
 					<button><i class="bi bi-search text-white"></i></button>
 				</div>
 				<div class="users-list overflow-scroll">

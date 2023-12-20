@@ -18,8 +18,8 @@ class basket extends backend
         return self::displayReservesPending();
     }
 
-    public function doDisplayReservesById($reserve_id){
-        return self::displayReservesById($reserve_id);
+    public function doDisplayReservesById($username){
+        return self::displayReservesById($username);
     }
 
     public function doUpdateReservePstatusDelivery($newP_status, $newDelivery, $reserveIdUpdate){
@@ -131,12 +131,12 @@ class basket extends backend
         }
     }
 
-    private function displayReservesById($reserve_id){
+    private function displayReservesById($username){
         try {
             $database = new database();
             if ($database->getStatus()){
                 $stmt = $database->getCon()->prepare($this->displayReservesByIdQuery());
-                $stmt->execute(array($reserve_id));
+                $stmt->execute(array($username));
                 $result = $stmt->fetchAll();
                 $database->closeConnection();
                 return json_encode($result);
@@ -197,7 +197,7 @@ class basket extends backend
     }
 
     private function displayReserveBasketQuery(){
-    	return "SELECT reserves.reserve_id, products.pname, reserves.reserve_kilo, reserves.r_total_amount, reserves.payment_status, reserves.r_p_method, reserves.r_delivery, reserves.created FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN products ON products.product_id = reserves.product_id WHERE profile.user_id = ? AND reserves.payment_status = 'pending'";
+    	return "SELECT reserves.reserve_id, products.pname, reserves.reserve_kilo, reserves.r_total_amount, reserves.payment_status, reserves.r_p_method, reserves.r_delivery, reserves.created FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN products ON products.product_id = reserves.product_id WHERE profile.user_id = ? AND reserves.payment_status = 'pending' ORDER BY reserves.created DESC";
     }
 
     private function updateReservePaymentStatusQuery(){
@@ -206,11 +206,11 @@ class basket extends backend
 
 
     private function displayReservesPendingQuery(){
-        return "SELECT reserves.reserve_id, users.username, profile.fname, profile.lname, profile.address, reserves.payment_status, reserves.r_delivery, reserves.created FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN users ON users.user_id = profile.user_id WHERE reserves.payment_status = 'pending'";
+        return "SELECT reserves.reserve_id, users.username, profile.fname, profile.lname, profile.address, reserves.payment_status, reserves.r_delivery, reserves.created FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN users ON users.user_id = profile.user_id WHERE reserves.payment_status = 'pending' GROUP BY users.username ORDER BY reserves.created DESC";
     }
 
     private function displayReservesByIdQuery(){
-        return "SELECT reserves.reserve_id, profile.fname, profile.lname, profile.address, profile.pnumber, products.pname, products.img, products.p_price, reserves.reserve_kilo, reserves.r_total_amount, reserves.r_p_method_receipt, reserves.r_p_method, reserves.r_ref_num, reserves.payment_status, reserves.r_delivery FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN products ON products.product_id = reserves.product_id WHERE reserves.reserve_id = ?";
+        return "SELECT reserves.reserve_id, profile.fname, profile.lname, profile.address, profile.pnumber, products.pname, products.img, products.p_price, reserves.reserve_kilo, reserves.r_total_amount, reserves.r_p_method_receipt, reserves.r_p_method, reserves.r_ref_num, reserves.payment_status, reserves.r_delivery, reserves.created, users.username FROM reserves INNER JOIN profile ON profile.user_id = reserves.user_id INNER JOIN products ON products.product_id = reserves.product_id INNER JOIN users ON reserves.user_id = users.user_id WHERE users.username = ? ORDER BY reserves.created DESC";
     }
 
     private function updateReservePstatusDeliveryQuery(){

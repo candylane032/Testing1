@@ -23,7 +23,7 @@
 							<div class="content d-flex align-items-center">
 								<img src="../../uploads/profileImage/' . $row['p_image'] . '">
 								<div class="details pt-3">
-									<span>' . $row['username'] . '</span>
+									<span class="text-capitalize">' . $row['username'] . '</span>
 									<p>'. $you . $msg .'</p>
 								</div>
 							</div>

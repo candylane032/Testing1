@@ -20,8 +20,8 @@ class order extends backend
         return self::displayOrdersUnpaid();
     }
 
-    public function doDisplayOrderById($order_id){
-        return self::displayOrderById($order_id);
+    public function doDisplayOrderById($username){
+        return self::displayOrderById($username);
     }
 
     public function doUpdateOrderPstatusDelivery($newP_status, $newDelivery, $orderIdUpdate){
@@ -112,12 +112,12 @@ class order extends backend
     }
 
 
-    private function displayOrderById($order_id){
+    private function displayOrderById($username){
         try {
             $database = new database();
             if ($database->getStatus()){
                 $stmt = $database->getCon()->prepare($this->displayOrderByIdQuery());
-                $stmt->execute(array($order_id));
+                $stmt->execute(array($username));
                 $result = $stmt->fetchAll();
                 $database->closeConnection();
                 return json_encode($result);
@@ -179,7 +179,7 @@ class order extends backend
 
 
     private function displayOrderQuery(){
-    	return "SELECT orders.order_id, products.pname, orders.order_kilo, orders.total_amount, orders.o_payment_status, orders.p_method, orders.o_delivery, orders.created FROM orders INNER JOIN profile ON profile.user_id = orders.user_id INNER JOIN products ON products.product_id = orders.product_id WHERE profile.user_id = ? AND orders.o_payment_status = 'pending'";
+    	return "SELECT orders.order_id, products.pname, orders.order_kilo, orders.total_amount, orders.o_payment_status, orders.p_method, orders.o_delivery, orders.created FROM orders INNER JOIN profile ON profile.user_id = orders.user_id INNER JOIN products ON products.product_id = orders.product_id WHERE profile.user_id = ? AND orders.o_payment_status = 'pending' ORDER BY orders.created DESC";
     }
 
     private function displayOrderPaidQuery(){
@@ -187,11 +187,11 @@ class order extends backend
     }
 
     private function displayOrdersUnpaidQuery(){
-        return "SELECT orders.order_id, users.username, profile.fname, profile.lname, profile.address, orders.o_payment_status, orders.o_delivery, orders.created FROM orders INNER JOIN profile ON profile.user_id = orders.user_id INNER JOIN users ON users.user_id = profile.user_id WHERE orders.o_payment_status = 'pending'";
+        return "SELECT orders.user_id, users.username, profile.fname, profile.lname, profile.address, orders.o_payment_status, orders.o_delivery, orders.created FROM orders INNER JOIN profile ON profile.user_id = orders.user_id INNER JOIN users ON users.user_id = profile.user_id WHERE orders.o_payment_status = 'pending' GROUP BY users.username ORDER BY orders.created DESC";
     }
 
     private function displayOrderByIdQuery(){
-        return "SELECT orders.order_id, profile.fname, profile.lname, profile.address, profile.pnumber, products.pname, products.img, products.p_price, orders.order_kilo, orders.total_amount, orders.p_method_receipt, orders.p_method, orders.ref_num, orders.o_payment_status, orders.o_delivery FROM orders INNER JOIN profile ON profile.user_id = orders.user_id INNER JOIN products ON products.product_id = orders.product_id WHERE orders.order_id = ?";
+        return "SELECT orders.order_id, profile.fname, profile.lname, profile.address, profile.pnumber, products.pname, products.img, products.p_price, orders.order_kilo, orders.total_amount, orders.p_method_receipt, orders.p_method, orders.ref_num, orders.o_payment_status, orders.o_delivery, orders.created, users.username FROM orders INNER JOIN profile ON profile.user_id = orders.user_id INNER JOIN products ON products.product_id = orders.product_id INNER JOIN users ON orders.user_id = users.user_id WHERE users.username = ? ORDER BY orders.created DESC";
     }
 
     private function updateOrderPstatusDeliveryQuery(){

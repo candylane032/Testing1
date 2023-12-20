@@ -117,7 +117,7 @@
                     <div class="history">
                         <div class="inner-wrap row">
                             <h4 class=" mb-3 text-center fw-bold mt-4">Recent Purchased</h4>
-                            <div class="col-md-4 col-sm-12 mb-2">
+                            <div class="col-md-4 col-sm-12 mb-3">
                                 <div class="search-container">
                                     <input type="text" id="searchInputPurchase" class="form-control" placeholder="Search user" onkeyup="searchUsersPurchase()">
                                 </div>
@@ -152,8 +152,8 @@
                 <div class="container">
                     <div class="history">
                         <div class="inner-wrap row">
-                            <h4 class=" mb-3 text-center fw-bold mt-4">Recent Reservation</h4>
-                            <div class="col-md-4 col-sm-12 mb-2">
+                            <h4 class=" mb-3 text-center fw-bold mt-5">Recent Reservation</h4>
+                            <div class="col-md-4 col-sm-12 mb-3">
                                 <div class="search-container">
                                     <input type="text" id="searchInputReserve" class="form-control" placeholder="Search user" onkeyup="searchUsersReserve()">
                                 </div>

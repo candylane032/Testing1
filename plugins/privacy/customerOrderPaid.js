@@ -40,7 +40,7 @@ var doRequestDisplayOrderPaid = (profileUserId) => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayOrderPaid', user_id: profileUserId },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
 

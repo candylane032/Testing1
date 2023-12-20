@@ -2,10 +2,22 @@ $(document).ready(function () {
     chartToday();
     chartDaily();
     chartMonthly();
-    setInterval(function () {
-        chart();
-    }, 24 * 60 * 60 * 1000);
+    chartMonthlyPage();
+    // $('#myChartMonthlyPages').hide();
+    // chartMonthlyPage(currentPage)
+    
+    // setInterval(function () {
+    //     Chart();
+    // }, 2000000);
 });
+// $(document).ready(function () {
+//     chartToday();
+//     chartDaily();
+//     chartMonthly(currentPage);
+//     setInterval(function () {
+//         chart();
+//     }, 24 * 60 * 60 * 1000);
+// });
 
 var chartToday = () => {
     $.ajax({
@@ -14,7 +26,11 @@ var chartToday = () => {
         data: { choice: 'chartToday' },
         success: function (data) {
             var chartdata = JSON.parse(data);
+
+            chartdata.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+
             var dataValues = chartdata.map(row => row.combined_total);
+            var dataValuesDate = chartdata.map(row => row.Date);
             var highestValue = Math.max(...dataValues);
             var currentDate = new Date();
             var dateInWords = formatDateInWords(currentDate);
@@ -23,6 +39,7 @@ var chartToday = () => {
 
             ctx.canvas.width = 600;
             ctx.canvas.height = 600;
+
 
             new Chart(ctx, {
                 type: 'bar',
@@ -44,19 +61,20 @@ var chartToday = () => {
                 },
                 options: {
                     scales: {
+                        x: {
+                            type: 'category',
+                            ticks: {
+                                color: 'white',
+                                maxTicksLimit: 12,
+                            }
+                        },
                         y: {
-                            suggestedMin: 10,
+                            suggestedMin: 0,
                             suggestedMax: highestValue,
                             ticks: {
                                 color: 'white'
                             }
                         },
-
-                        x: {
-                            ticks: {
-                                color: 'white'
-                            }
-                        }
                     },
                     plugins: {
                         legend: {
@@ -99,7 +117,13 @@ var chartDaily = () => {
         data: { choice: 'chartDaily' },
         success: function (data) {
             var chartdata = JSON.parse(data);
+
+            chartdata.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+
+            chartdata = chartdata.slice(0, 12);
+
             var dataValues = chartdata.map(row => row.combined_total);
+            var dataValuesDate = chartdata.map(row => row.Date);
             var highestValue = Math.max(...dataValues);
 
             var ctx = document.getElementById('myChartDaily').getContext('2d');
@@ -127,6 +151,13 @@ var chartDaily = () => {
                 },
                 options: {
                     scales: {
+                        x: {
+                            type: 'category',
+                            ticks: {
+                                color: 'white',
+                                maxTicksLimit: 12,
+                            }
+                        },
                         y: {
                             suggestedMin: 0,
                             suggestedMax: highestValue,
@@ -134,12 +165,6 @@ var chartDaily = () => {
                                 color: 'white'
                             }
                         },
-
-                        x: {
-                            ticks: {
-                                color: 'white'
-                            }
-                        }
                     },
                     plugins: {
                         legend: {
@@ -175,14 +200,21 @@ var chartMonthly = () => {
         data: { choice: 'chartMonthly' },
         success: function (data) {
             var chartdata = JSON.parse(data);
+
+            chartdata.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+
+            chartdata = chartdata.slice(0, 12);
+
             var dataValues = chartdata.map(row => row.combined_total);
+            var dataValuesDate = chartdata.map(row => row.Date);
             var highestValue = Math.max(...dataValues);
 
             var ctx = document.getElementById('myChartMonthly').getContext('2d');
+            $('#myChartMonthlyPages').hide(setInterval(200));
 
             ctx.canvas.width = 600;
             ctx.canvas.height = 600;
-            
+
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -203,6 +235,13 @@ var chartMonthly = () => {
                 },
                 options: {
                     scales: {
+                        x: {
+                            type: 'category',
+                            ticks: {
+                                color: 'white',
+                                maxTicksLimit: 12,
+                            }
+                        },
                         y: {
                             suggestedMin: 0,
                             suggestedMax: highestValue,
@@ -210,12 +249,6 @@ var chartMonthly = () => {
                                 color: 'white'
                             }
                         },
-
-                        x: {
-                            ticks: {
-                                color: 'white'
-                            }
-                        }
                     },
                     plugins: {
                         legend: {
@@ -243,3 +276,136 @@ var chartMonthly = () => {
         }
     });
 };
+
+
+var currentPage = 1;
+    var itemsPerPage = 12;
+    var totalPages;
+
+    function updatePaginationUI(currentPage, totalPages) {
+        var paginationContainer = $('#pagination');
+        paginationContainer.empty();
+    }
+
+    function chartMonthlyPage(pageNumber, currentPage) {
+        $.ajax({
+            type: "POST",
+            url: "../../routes/router.php",
+            data: { choice: 'chartMonthly' },
+            success: function (data) {
+                var chartdata = JSON.parse(data);
+          
+                chartdata.sort((a, b) => new Date(b.Date) - new Date(a.Date));
+    
+                totalPages = Math.ceil(chartdata.length / itemsPerPage);
+    
+                var startIndex = (pageNumber - 1) * itemsPerPage;
+                var endIndex = startIndex + itemsPerPage;
+    
+                chartdata = chartdata.slice(startIndex, endIndex);
+    
+                var dataValues = chartdata.map(row => row.combined_total);
+                var dataValuesDate = chartdata.map(row => row.Date);
+                var highestValue = Math.max(...dataValues);
+    
+                var ctx = document.getElementById('myChartMonthlyPages').getContext('2d');
+
+
+
+if (ctx) {
+    if (window.myChart) {
+        window.myChart.destroy();
+    }
+
+    ctx.canvas.width = 600;
+    ctx.canvas.height = 600;
+
+    var reversedLabels = chartdata.map(row => row.Date);
+
+    window.myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: reversedLabels,
+            datasets: [{
+                label: 'Monthly Sales',
+                data: dataValues, 
+                backgroundColor: '#9ed3fe',
+                borderColor: '#55d6ff',
+                borderWidth: 1,
+                pointRadius: 6,
+                pointBackgroundColor: '#4bc0c0',
+                pointBorderColor: '#fff',
+                pointHoverRadius: 8,
+                pointHoverBackgroundColor: '#4bc0c0',
+                pointHoverBorderColor: 'rgba(220, 220, 220, 1)',
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'category',
+                    ticks: {
+                        color: 'white',
+                        maxTicksLimit: 12,
+                    }
+                },
+                y: {
+                    suggestedMin: 0,
+                    suggestedMax: highestValue,
+                    ticks: {
+                        color: 'white'
+                    }
+                },
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white'
+                    },
+                    margin: {
+                        bottom: 20
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 10,
+                    top: 5,
+                    bottom: 5
+                },
+            },
+        }
+    });
+    
+                    updatePaginationUI(pageNumber, totalPages);
+                } else {
+                    console.error("Canvas context is null.");
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError);
+            }
+        });
+    }
+
+    // $('#myChartMonthlyPages').hide();
+
+    $('#nextBtn').on('click', function () {
+        $('#myChartMonthly').hide();
+        $('#myChartMonthlyPages').show();
+        if (currentPage < totalPages) {
+            currentPage++;
+            chartMonthlyPage(currentPage);
+        }
+    });
+    
+    $('#prevBtn').on('click', function () {
+        $('#myChartMonthly').hide();
+        $('#myChartMonthlyPages').show();
+        if (currentPage > 1) {
+            currentPage--;
+            chartMonthlyPage(currentPage);
+        }
+    });
+    

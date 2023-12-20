@@ -36,7 +36,7 @@ var doRequestAddGallery = (formData) => {
         processData: false,
         contentType: false,
         success: (data) => {
-            console.log(data);
+            // console.log(data);
             if (data === "200") {
                 Swal.fire({
                     icon: 'success',
@@ -62,7 +62,7 @@ var doRequestDisplayGallery = () => {
         data: { choice: 'DisplayGallery', },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json = JSON.parse(data);
             var str = "";
             let gallery = 1;
@@ -125,7 +125,7 @@ var doRequestDisplayGalleryModal = (SetIdGallery) => {
         data: { choice: 'DisplayGalleryModal', gallery_id: SetIdGallery },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let gallery1 = 1;
@@ -173,7 +173,7 @@ var doRequestDisplayGalleryModalUpdate = (SetIdGalleryUpdate) => {
         data: { choice: 'DisplayGalleryModalUpdate', gallery_id: SetIdGalleryUpdate },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json2 = JSON.parse(data);
             var str2 = "";
             let gallery2 = 1;
@@ -238,7 +238,7 @@ var doRequestUpdateGallery = (newG_image, newDescript, galleryId) => {
         processData: false,
         contentType: false,
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',

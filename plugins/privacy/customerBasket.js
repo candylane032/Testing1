@@ -45,7 +45,7 @@ var doRequestDisplayReserveBasket = (profileUserId) => {
       user_id: profileUserId,
     },
     success: function (data) {
-      console.log(data);
+      // console.log(data);
       var json2 = JSON.parse(data);
       var str2 = "";
       let basket = 1;
@@ -114,7 +114,7 @@ var doRequestUpdateReservePaymentStatus = (reserveId, payment_stat) => {
       payment_status: payment_stat,
     },
     success: function (data) {
-      console.log(data);
+      // console.log(data);
       if (data === "200") {
         console.log("Countdown Duration Expired");
         window.location.href = "../../pages/customer/basket1.php";
@@ -137,7 +137,7 @@ var doRequestViewReserve = (reserve_id) => {
     url: "../../routes/router.php",
     data: { choice: 'ViewReserve', reserve_id: reserve_id },
     success: function (data) {
-      console.log(data);
+      // console.log(data);
       var json3 = JSON.parse(data);
       var str3 = "";
       let reserveView = 1;

@@ -8,29 +8,31 @@ var doRequestDisplayReservesPending = () => {
         url: "../../routes/router.php",
         data: { choice: 'DisplayReservesPending', },
         success: function (data) {
-            console.log(data);
             var json = JSON.parse(data);
             var str = "";
             let basket = 1;
 
+            var uniqueUsernames = {};
+            var uniqueFnames = {};
+
             json.forEach(element => {
+                if(!uniqueUsernames.hasOwnProperty(element.username)){
+                    str += '<tr>';
+                    str += '<td class="text-capitalize" data-label="UNAME">' + element.username + '</td>';
+                    str += '<td class="text-capitalize" data-label="FNAME">' + element.fname + '</td>';
+                    str += '<td class="text-capitalize" data-label="LNAME">' + element.lname + '</td>';
+                    str += '<td class="text-capitalize" data-label="ADDRESS">' + element.address + '</td>';
+                    str += '<td data-label="DATE">' + element.created + '</td>';
+                    str += '<td data-label="ACTION">';
+                    str += '<button username="' + element.username + '" data-bs-toggle="modal" data-bs-target="#reservesbyid" class="btn-update mx-1 btn-update-reserves"><i class="bi bi-pencil-square"></i></button>';
+                    str += '<button class="btn-status mx-1"><a class="text-decoration-none text-white" href="../chatAdmin/index.php"><i class="bi bi-chat-dots"></i></a></button>';
+                    str += '</td>';
+                    str += '</tr>';
 
-                str += '<tr>';
-                str += '<td data-label="Count">' + basket + '</td>';
-                str += '<td class="text-capitalize" data-label="UNAME">' + element.username + '</td>';
-                str += '<td class="text-capitalize" data-label="FNAME">' + element.fname + '</td>';
-                str += '<td class="text-capitalize" data-label="LNAME">' + element.lname + '</td>';
-                str += '<td class="text-capitalize" data-label="ADDRESS">' + element.address + '</td>';
-                str += '<td class="text-warning text-capitalize" data-label="STATUS">' + element.payment_status + '</td>';
-                str += '<td class="text-success text-capitalize" data-label="DELIVERY">' + element.r_delivery + '</td>';
-                str += '<td data-label="DATE">' + element.created + '</td>';
+                    uniqueUsernames[element.username] = true;
+                    uniqueFnames[element.fname] = true;
 
-                str += '<td data-label="ACTION">';
-                str += '<button reserve_id="' + element.reserve_id + '" data-bs-toggle="modal" data-bs-target="#reservesbyid" class="btn-update mx-1 btn-update-reserves"><i class="bi bi-pencil-square"></i></button>';
-                str += '<button class="btn-status mx-1"><a class="text-decoration-none text-white" href="../chatAdmin/index.php"><i class="bi bi-chat-dots"></i></a></button>';
-                str += '</td>';
-
-                str += '</tr>';
+                }
                 basket++;
             });
             $('#displayReservesPending').append(str);
@@ -38,9 +40,9 @@ var doRequestDisplayReservesPending = () => {
 
 
             $('.btn-update-reserves').click(function () {
-                let reserve_Id = $(this).attr("reserve_id");
+                let userUsername = $(this).attr("username");
 
-                doRequestDisplayReservesById(reserve_Id);
+                doRequestDisplayReservesById(userUsername);
             });
 
 
@@ -62,7 +64,7 @@ var doRequestUpdateReservePaymentStatus = (reserveId, payment_stat) => {
             payment_status: payment_stat,
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data === "200") {
                 console.log("Countdown Duration Expired");
                 window.location.href = "../../pages/admin/adminBasket.php";
@@ -74,23 +76,25 @@ var doRequestUpdateReservePaymentStatus = (reserveId, payment_stat) => {
     });
 }
 
-var doRequestDisplayReservesById = (reserve_Id) => {
+var doRequestDisplayReservesById = (userUsername) => {
     $.ajax({
 
         type: "POST",
         url: "../../routes/router.php",
-        data: { choice: 'DisplayReservesById', reserve_id: reserve_Id },
+        data: { choice: 'DisplayReservesById', username: userUsername },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let orderbyId = 1;
 
+            var uniqueFnames = {};
             json1.forEach(element1 => {
 
                 str1 += '<div class="rowOrder row mt-2 p-3 mb-3">';
                 str1 += '<div class="col-12 col-lg-6">';
                 str1 += '<div>';
+            if(!uniqueFnames.hasOwnProperty(element1.fname)){    
                 str1 += '<label class="fw-bold">FULL NAME</label>';
                 str1 += '<p><span class="text-capitalize">' + element1.fname + '</span><span class="text-capitalize"> ' + element1.lname + '</span></p>';
                 str1 += '</div>';
@@ -102,14 +106,17 @@ var doRequestDisplayReservesById = (reserve_Id) => {
                 str1 += '<label class="fw-bold">PHONE NUMBER</label>';
                 str1 += '<p>' + element1.pnumber + '</p>';
                 str1 += '</div>';
+
+                uniqueFnames[element1.fname] = true;
+            }
                 str1 += '<div>';
                 str1 += '<label class="fw-bold">PRODUCT NAME</label>';
                 str1 += '<p>' + element1.pname + '</p>';
                 str1 += '</div>';
-                str1 += '<div>';
-                str1 += '<label class="fw-bold">PRODUCT IMAGE</label>';
-                str1 += '<p><img class="orderImg rounded object-fit-cover" src="../../uploads/productImage/' + element1.img + '"></p>';
-                str1 += '</div>';
+                // str1 += '<div>';
+                // str1 += '<label class="fw-bold">PRODUCT IMAGE</label>';
+                // str1 += '<p><img class="orderImg rounded object-fit-cover" src="../../uploads/productImage/' + element1.img + '"></p>';
+                // str1 += '</div>';
                 str1 += '<div>';
                 str1 += '<label class="fw-bold">PRODUCT PRICE</label>';
                 str1 += '<p>' + element1.p_price + '</p>';
@@ -151,6 +158,29 @@ var doRequestDisplayReservesById = (reserve_Id) => {
                 str1 += '<label class="fw-bold">REFERENCE NUMBER</label>';
                 str1 += '<p>' + element1.r_ref_num + '</p>';
                 str1 += '</div>';
+
+                var textColorStatus = element1.payment_status === "pending" ? 'text-warning' : 'text-success';
+
+                str1 += '<label >Payment Status: <span class="' + textColorStatus + ' fw-bold">' + element1.payment_status + '</span></label><br><br>';
+                var textColorDelivery;
+
+                switch (element1.r_delivery) {
+                    case "waiting":
+                        textColorDelivery = 'text-info';
+                        break;
+                    case "preparing":
+                        textColorDelivery = 'text-warning';
+                        break;
+                    case "On the Way":
+                        textColorDelivery = 'text-primary';
+                        break;
+                    default:
+                        textColorDelivery = 'text-success';
+                }
+
+                str1 += '<label>Delivery Status: <span class="' + textColorDelivery + ' fw-bold">' + element1.r_delivery + '</span></label><br><br>';
+                str1 += '<label>Date & Time: <span class=" fw-bold">' + element1.created + '</span></label><br><br>';
+
                 str1 += '<div class="mb-3">';
                 str1 += '<label class="fw-bold">PAYMENT STATUS</label>';
                 str1 += '<select class="form-control" id="p_status_' + element1.reserve_id + '" value="' + element1.payment_status + '">';
@@ -213,7 +243,7 @@ var doRequestUpdateReservePstatusDelivery = (newP_status, newDelivery, reserveId
             reserve_id: reserveIdUpdate,
         },
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             if (data == "200") {
                 Swal.fire({
                     icon: 'success',
@@ -228,4 +258,83 @@ var doRequestUpdateReservePstatusDelivery = (newP_status, newDelivery, reserveId
         }
     });
 }
+
+var reserveSearch = () => {
+    var searchQuery = $('#reserveSearchInput').val().toLowerCase(); // Convert the search query to lowercase
+    var container = $('#displayReservesPending');
+
+    $.ajax({
+        type: "POST",
+        url: "../../routes/router.php",
+        data: { choice: 'DisplayReservesPending' },
+        success: function (data) {
+            try {
+                var json = JSON.parse(data);
+                json.sort(function (a, b) {
+                    var dateA = new Date(a.created);
+                    var dateB = new Date(b.created);
+                    return dateB - dateA;
+                });
+                json.reverse();
+                container.empty();
+
+                if (searchQuery === '') {
+                    json.forEach(function (e) {
+                        displaySearch(container, e);
+                    });
+                } else {
+                    var filteredData = json.filter(function (e) {
+                        // Use includes() directly on lowercase strings for case-insensitive comparison
+                        return e.username.toLowerCase().includes(searchQuery);
+                    });
+
+                    if (filteredData.length === 0) {
+                        container.append("<p>No matching products found.</p>");
+                    } else {
+                        filteredData.forEach(function (e) {
+                            displaySearch(container, e);
+                        });
+                    }
+                }
+            } catch (error) {
+                console.error("Error parsing JSON data: " + error);
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("An error occurred: " + thrownError);
+        }
+    });
+}
+
+function displaySearch(container, e) {
+
+   
+    str = '';
+
+    
+        str += '<tr>';
+        str += '<td class="text-capitalize" data-label="UNAME">' + e.username + '</td>';
+        str += '<td class="text-capitalize" data-label="FNAME">' + e.fname + '</td>';
+        str += '<td class="text-capitalize" data-label="LNAME">' + e.lname + '</td>';
+        str += '<td class="text-capitalize" data-label="ADDRESS">' + e.address + '</td>';
+        str += '<td data-label="DATE">' + element.created + '</td>';
+        str += '<td data-label="ACTION">';
+        str += '<button username="' + e.username + '" data-bs-toggle="modal" data-bs-target="#reservesbyid" class="btn-update mx-1 btn-update-reserves"><i class="bi bi-pencil-square"></i></button>';
+        str += '<button class="btn-status mx-1"><a class="text-decoration-none text-white" href="../chatAdmin/index.php"><i class="bi bi-chat-dots"></i></a></button>';
+        str += '</td>';
+        str += '</tr>';
+
+    
+
+    container.append(str);
+
+    $('.btn-update-reserves').click(function () {
+        let userUsername = $(this).attr("username");
+
+        doRequestDisplayReservesById(userUsername);
+    });
+
+}
+
+
 

@@ -146,7 +146,7 @@ var doRequestDisplayGalleryModal = (SetIdGallery) => {
         data: { choice: 'DisplayGalleryModal', gallery_id: SetIdGallery },
 
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             var json1 = JSON.parse(data);
             var str1 = "";
             let gallery1 = 1;

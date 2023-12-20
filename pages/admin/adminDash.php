@@ -28,7 +28,7 @@
 
 </head>
 
-<body style="background-color: #002d6c;">
+<body style="background-color: gray">
     <!-- Start Side bar -->
     <div class="main-container d-flex">
         <div class="sidebar" id="side_nav">
@@ -111,11 +111,30 @@
             <section class="Dashboard">
                 <div class="container">
                     <h1 class="m-3 text-white">Dashboard</h1>
-                    <div id="chart">
-                        <canvas id="myChartToday"></canvas>
-                        <canvas id="myChartDaily"></canvas>
-                        <canvas id="myChartMonthly"></canvas>
-                    </div> 
+                    <div class="container mt-4">
+                        <div class="row">
+                            <div class="col-md-4 mt-5">
+                                <canvas id="myChartToday"></canvas>
+                            </div>
+                            <div class="col-md-4 mt-5 mb-5">
+                                <canvas id="myChartDaily"></canvas>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                    <button class="btn btn-primary mb-2" id="prevBtn">Previous</button>
+                                    <button class="btn btn-primary mb-2" id="nextBtn">Next</button>
+
+                                    <canvas id="myChartMonthly"></canvas>
+                                    <canvas id="myChartMonthlyPages"></canvas>
+
+                                    <nav aria-label="Page navigation">
+                                        <ul class="pagination justify-content-center mt-3" id="pagination">
+                                            <!-- Pagination content -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                        </div>
+                    </div>
+    
                 </div> 
             </section>
         </div>
@@ -124,7 +143,9 @@
 
     <script src="../../plugins/privacy/jquery.js"></script>
     <script src="../../plugins/privacy/chart.js"></script>
+    <!-- <script src="../../plugins/privacy/myChartDaily.js"></script> -->
     <script src="../../plugins/privacy/myChart.js"></script>
+    <!-- <script src="../../plugins/privacy/myChartMontly.js"></script> -->
     <script src="../../plugins/privacy/logout.js"></script>
     
     <!-- DOWNLOADED JS -->
